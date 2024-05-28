@@ -1,0 +1,80 @@
+name: CI Pipeline
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "main"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{github.workflow}}-${{github.ref}}
+  cancel-in-progress: false
+
+jobs:
+  setup_and_build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - name: Install pnpm Package Manager
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+      - name: Get pnpm Store Directory
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+      - name: Setup pnpm Cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Install Dependencies
+        run: pnpm install
+      - name: Run ESLint
+        run: eslint . --ext .js,.jsx,.ts,.tsx
+      - name: Build/Bundle Application
+        run: pnpm run build
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: 'build'
+          path: 'build'
+  
+  deploy:
+    needs: setup_and_build
+    environment:
+      name: github-pages
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    steps:
+      - name: Download build artifac
+        uses: actions/download-artifact@v4
+        with:
+          name: 'build'
+          path: 'build'
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload Page Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'build'
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          user_name: arafetki
+          user_email: mr.arafetk@gmail.com
+
