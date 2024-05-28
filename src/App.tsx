@@ -13,6 +13,7 @@ function App() {
         <img src={reactLogo} className="logo react" alt="React logo" />
       </a>
       <h1>Under Construction!</h1>
+      <h2>Hello from Github Pages</h2>
     </>
   )
 }
