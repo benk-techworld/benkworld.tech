@@ -40,11 +40,7 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
       - name: Run ESLint
-        uses: sibiraj-s/action-eslint@v3
-        with:
-          eslint-args: '--ignore-path=.gitignore --quiet'
-          extensions: 'js,jsx,ts,tsx'
-          annotations: true
+        run: pnpm run lint
       - name: Build/Bundle Application
         if: github.event_name != 'pull_request'
         run: pnpm run build
@@ -70,7 +66,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: 'build'
-          path: 'build'
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload Page Artifact
