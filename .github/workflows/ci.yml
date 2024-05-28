@@ -70,13 +70,10 @@ jobs:
           path: 'dist'
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: Upload Page Artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: 'dist'
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         id: deployment
+        if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
