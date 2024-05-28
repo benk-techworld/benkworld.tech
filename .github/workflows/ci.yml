@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - "main"
+    paths-ignore:
+      - ".github/workflows/*"
   pull_request:
     branches:
       - "main"
@@ -53,7 +55,7 @@ jobs:
   
   deploy:
     needs: setup_and_build
-    if: github.event_name != 'pull_request'
+    if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -73,7 +75,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         id: deployment
-        if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
