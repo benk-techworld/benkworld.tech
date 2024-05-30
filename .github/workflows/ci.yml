@@ -5,6 +5,9 @@ on:
       - "main"
     paths-ignore:
       - ".github/workflows/*"
+      - "README.md"
+      - "LICENSE"
+      - ".gitignore"
   pull_request:
     branches:
       - "main"
