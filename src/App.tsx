@@ -12,7 +12,7 @@ function App() {
       <a href="https://react.dev" target="_blank">
         <img src={reactLogo} className="logo react" alt="React logo" />
       </a>
-      <h1>Under Construction!</h1>
+      <h1>Under Construction!!</h1>
       <h2>Hello from Github Pages :)</h2>
     </>
   )
