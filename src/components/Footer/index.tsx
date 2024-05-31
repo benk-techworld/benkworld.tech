@@ -6,7 +6,7 @@ export default function Footer() {
             <div className="flex items-center space-x-2">
                 <FaGithub className="text-2xl" />
                 <a
-                    href="https://github.com/your-github-username"
+                    href="https://github.com/benk-techworld"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-gray-400"
