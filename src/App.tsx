@@ -1,11 +1,14 @@
-import './App.css'
+import Construction from './components/Construction'
+import Footer from './components/Footer'
+import Navigationbar from './components/Navbar'
 
 function App() {
 
   return (
     <>
-      <h1>Under Construction!</h1>
-      <h2>Hello from Github Pages :)</h2>
+      <Navigationbar/>
+      <Construction />
+      <Footer/>
     </>
   )
 }

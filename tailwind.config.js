@@ -8,8 +8,13 @@ export default {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        blue: "#064AB7",
+        pink: "#C9055C"
+      }
+    },
   },
-  plugins: [nextui()],
+  plugins: [nextui({addCommonColors: true})],
   darkMode: "class"
 }
