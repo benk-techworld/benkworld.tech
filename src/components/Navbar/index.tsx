@@ -2,8 +2,9 @@ import { useState } from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem} from "@nextui-org/navbar";
 import {Button} from "@nextui-org/button"
 import {Link} from "@nextui-org/link"
-import { MdArticle } from "react-icons/md";
-import { IoChatboxEllipses } from "react-icons/io5";
+import ThemeSwitcher from "../ThemeSwitcher";
+import { TfiWrite } from "react-icons/tfi";
+import { IoIosMail } from "react-icons/io";
  
 export default function Navigationbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -24,7 +25,7 @@ export default function Navigationbar() {
         <Navbar 
             shouldHideOnScroll 
             onMenuOpenChange={setIsMenuOpen}
-            className="bg-[rgb(15, 16, 17)] border-b border-[rgb(48,48,48)]"
+            className="gradient-background border-b border-[#44424275]"
             classNames={{
                 item: [
                     "flex",
@@ -38,7 +39,7 @@ export default function Navigationbar() {
                     "data-[active=true]:after:right-0",
                     "data-[active=true]:after:h-[2px]",
                     "data-[active=true]:after:rounded-[2px]",
-                    "data-[active=true]:after:bg-pink",                    
+                    "data-[active=true]:after:bg-red-500",                    
                 ]
             }}
 
@@ -49,7 +50,7 @@ export default function Navigationbar() {
                     className="sm:hidden"
                 />
                 <NavbarBrand>
-                    <Link className="font-bold text-inherit" href="#">Benk <span className="text-pink ml-1">TechWorld</span></Link>
+                    <Link className="font-bold text-foreground" href="#">Benk <span className="text-red-500 ml-1">TechWorld</span></Link>
                 </NavbarBrand>
             </NavbarContent>
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
@@ -59,7 +60,7 @@ export default function Navigationbar() {
                             isActive={activeItem === item}
                             key={`${item}-${idx}`}
                         >
-                            <Link onScroll={()=>handleItemClick(item)} onPress={()=>handleItemClick(item)} className="text-[rgb(185,184,184)]" href="#">
+                            <Link onScroll={()=>handleItemClick(item)} onPress={()=>handleItemClick(item)} className="text-foreground" href="#">
                                 {item}
                             </Link>
                         </NavbarItem>
@@ -67,14 +68,16 @@ export default function Navigationbar() {
                 })}
             </NavbarContent>
             <NavbarContent justify="end">
-                <NavbarItem className="flex gap-1.5">
+                <NavbarItem className="flex gap-1">
+                    <ThemeSwitcher/>
                     <Button 
                         size="sm" 
                         radius="md" 
                         href="#" 
-                        variant="light"
-                        className="text-[rgb(185,184,184)] font-bold"
-                        startContent={<IoChatboxEllipses/>}
+                        variant="ghost"
+                        color="secondary"
+                        className="text-foreground border-1 border-foreground hover:border-0"
+                        startContent={<IoIosMail/>}
                     >
                         Contact
                     </Button>                    
@@ -82,26 +85,27 @@ export default function Navigationbar() {
                         size="sm" 
                         radius="md" 
                         href="#" 
-                        variant="bordered"
-                        className="text-[rgb(185,184,184)] font-bold border-1 hover:border-0 hover:text-pink"
-                        startContent={<MdArticle/>}
+                        variant="ghost"
+                        color="primary"
+                        className="text-foreground border-1 border-foreground hover:border-0 hover:text-[#FEFEFE]"
+                        startContent={<TfiWrite/>}
                     >
                         Blog
                     </Button>                    
                 </NavbarItem>
             </NavbarContent>
-            <NavbarMenu className="bg-[rgb(15, 16, 17)]">
+            <NavbarMenu>
                 {menuItems.map((menuItem:string,idx:number)=>{
                     return (
                         <NavbarMenuItem 
                             key={`${menuItem}-${idx}`}
                         >
-                            <Link className="text-[rgb(185,184,184)]" href="#">
+                            <Link className="text-foreground" href="#">
                                 {menuItem}
                             </Link>
                         </NavbarMenuItem>
                     )
-                })}                                            
+                })}                                                   
             </NavbarMenu>       
         </Navbar>
     )

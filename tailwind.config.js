@@ -9,12 +9,40 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        blue: "#064AB7",
-        pink: "#C9055C"
+      fontFamily: {
+        sans: ['Poppins','Roboto','Rubik','Arial','sans-serif'],
+        roboto: ['Roboto','sans-serif']
+
       }
-    },
+    }
   },
-  plugins: [nextui({addCommonColors: true})],
+  plugins: [
+    nextui({
+      addCommonColors: true,
+      themes: {
+        light:{
+          colors: {
+            background: "#fffbff",
+            foreground: "#080708",
+            focus: "#0E793C",
+            primary: "#F31260",
+            secondary: "#E4E4E7",
+          }
+        },
+        dark:{
+          colors: {
+            background: "#0a0903",
+            foreground: "#FEFEFE",
+            focus: "#12A150",
+            primary:"#F31260",
+            secondary: "#27272A",
+          }
+        }
+      },
+      colors: {
+
+      }
+    })
+  ],
   darkMode: "class"
 }
