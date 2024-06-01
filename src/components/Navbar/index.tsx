@@ -1,12 +1,13 @@
 import { useState } from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem} from "@nextui-org/navbar";
-import {Button} from "@nextui-org/button"
-import {Link} from "@nextui-org/link"
+import {Link,Button} from "@nextui-org/react"
 import ThemeSwitcher from "../ThemeSwitcher";
 import { TfiWrite } from "react-icons/tfi";
 import { IoIosMail } from "react-icons/io";
+
  
 export default function Navigationbar() {
+
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [activeItem, setActiveItem] = useState("");
 
@@ -23,7 +24,7 @@ export default function Navigationbar() {
 
     return (
         <Navbar 
-            shouldHideOnScroll 
+            // shouldHideOnScroll 
             onMenuOpenChange={setIsMenuOpen}
             className="gradient-background border-b border-[#44424275]"
             classNames={{
@@ -44,13 +45,9 @@ export default function Navigationbar() {
             }}
 
         >
-            <NavbarContent>
-                <NavbarMenuToggle
-                    aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-                    className="sm:hidden"
-                />
+            <NavbarContent justify="start">
                 <NavbarBrand>
-                    <Link className="font-bold text-foreground" href="#">Benk <span className="text-red-500 ml-1">TechWorld</span></Link>
+                    <Link className="font-bold text-foreground text-small sm:text-medium" href="#">Benk <span className="text-red-500 ml-1">TechWorld</span></Link>
                 </NavbarBrand>
             </NavbarContent>
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
@@ -68,8 +65,8 @@ export default function Navigationbar() {
                 })}
             </NavbarContent>
             <NavbarContent justify="end">
-                <NavbarItem className="flex gap-1">
-                    <ThemeSwitcher/>
+                <ThemeSwitcher/>
+                <NavbarItem className="sm:flex gap-1 hidden">
                     <Button 
                         size="sm" 
                         radius="md" 
@@ -80,7 +77,7 @@ export default function Navigationbar() {
                         startContent={<IoIosMail/>}
                     >
                         Contact
-                    </Button>                    
+                    </Button>                                        
                     <Button 
                         size="sm" 
                         radius="md" 
@@ -93,6 +90,28 @@ export default function Navigationbar() {
                         Blog
                     </Button>                    
                 </NavbarItem>
+                <NavbarItem className="sm:hidden flex">
+                    <Button 
+                        size="sm" 
+                        isIconOnly 
+                        className="text-foreground border-0" 
+                        variant="bordered" 
+                    >
+                        <IoIosMail size={25}/>
+                    </Button> 
+                    <Button 
+                        size="sm" 
+                        isIconOnly 
+                        className="text-foreground border-0" 
+                        variant="bordered" 
+                    >
+                        <TfiWrite size={20}/>
+                    </Button>                                                                                     
+                </NavbarItem>    
+                <NavbarMenuToggle
+                    aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                    className="sm:hidden"
+                />                                           
             </NavbarContent>
             <NavbarMenu>
                 {menuItems.map((menuItem:string,idx:number)=>{
