@@ -1,18 +1,15 @@
-import Blog from './pages/Blog'
-import Home from './pages/Home'
-import { Routes,Route } from 'react-router'
-import Layout from './pages/layout'
-import Contact from './pages/Contact'
+import Construction from './components/Construction'
+import Footer from './components/Footer'
+import Navigationbar from './components/Navbar'
 
 function App() {
+
   return (
-    <Routes>
-      <Route path='/' element={<Layout/>}>
-        <Route index element={<Home/>} />
-        <Route path='blog' element={<Blog/>} />
-        <Route path='contact' element={<Contact/>}/>
-      </Route>
-    </Routes>
+    <>
+      <Navigationbar/>
+      <Construction />
+      <Footer/>
+    </>
   )
 }
 
