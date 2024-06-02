@@ -44,18 +44,17 @@ export default function Navigationbar() {
                 ]
             }}
 
-        >
+        >        
             <NavbarContent justify="start">
                 <NavbarBrand>
                     <Link className="font-bold text-foreground text-small sm:text-medium" href="#">Benk <span className="text-red-500 ml-1">TechWorld</span></Link>
-                </NavbarBrand>
-            </NavbarContent>
-            <NavbarContent className="hidden sm:flex gap-4" justify="center">
+                </NavbarBrand>                    
                 {menuItems.map((item:string,idx:number)=>{
                     return (
                         <NavbarItem 
                             isActive={activeItem === item}
                             key={`${item}-${idx}`}
+                            className="hidden sm:flex gap-4"
                         >
                             <Link onScroll={()=>handleItemClick(item)} onPress={()=>handleItemClick(item)} className="text-foreground" href="#">
                                 {item}
