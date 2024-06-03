@@ -1,23 +1,23 @@
-import {useTheme} from "next-themes";
+import useTheme from "@/hooks/useTheme";
 import { useEffect, useState } from "react";
-import {Switch} from "@nextui-org/react";
+import { Switch } from "@nextui-org/react";
 import { FaMoon } from "react-icons/fa6";
 import { IoMdSunny } from "react-icons/io";
 
 export default function ThemeSwitcher() {
-  const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useTheme(); 
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
-  if(!mounted) return null
+  if (!mounted) return null;
 
   return (
     <Switch
-      defaultSelected={theme==="dark"}
-      onClick={()=>setTheme(theme === 'light' ? 'dark' : 'light')}
+      defaultSelected={theme === "dark"}
+      onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
       size="sm"
       color="secondary"
       thumbIcon={({ isSelected, className }) =>
@@ -28,5 +28,5 @@ export default function ThemeSwitcher() {
         )
       }
     />
-  )
+  );
 }
