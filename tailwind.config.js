@@ -26,7 +26,7 @@ export default {
             foreground: "#080708",
             focus: "#0E793C",
             primary: "#F31260",
-            secondary: "#E4E4E7",
+            secondary: "#52525b",
           }
         },
         dark:{
@@ -34,8 +34,8 @@ export default {
             background: "#0a0903",
             foreground: "#FEFEFE",
             focus: "#12A150",
-            primary:"#F31260",
-            secondary: "#27272A",
+            primary:"#52525b",
+            secondary: "#e4e4ed",
           }
         }
       },

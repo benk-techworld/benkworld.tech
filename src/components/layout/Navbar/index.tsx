@@ -1,29 +1,30 @@
 import { useState } from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem} from "@nextui-org/navbar";
-import {Link,Button} from "@nextui-org/react"
+import {Link} from "@nextui-org/react"
 import ThemeSwitcher from "../../ThemeSwitcher";
-import { TfiWrite } from "react-icons/tfi";
-import { IoIosMail } from "react-icons/io";
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa6";
+import { FaFacebookSquare } from "react-icons/fa";
 
- 
-export default function Navigation() {
+import type {MenuItem} from './types'
+
+type NavigationProps = {
+    menuItems: MenuItem[]
+}
+
+export default function Navigation({menuItems}: NavigationProps): JSX.Element {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [activeItem, setActiveItem] = useState("");
 
-    const menuItems: string[] = [
-        "About",
-        "Experience",
-        "Projects",
-    ]
 
     const handleItemClick = (item: string) => {
         setActiveItem(item);
     };
 
     return (
+
         <Navbar 
-            // shouldHideOnScroll 
             onMenuOpenChange={setIsMenuOpen}
             className="gradient-background border-b border-[#44424275]"
             classNames={{
@@ -43,89 +44,54 @@ export default function Navigation() {
                 ]
             }}
 
-        >        
+        >   
+            {/* Desktop Menu */}
+
             <NavbarContent justify="start">
                 <NavbarBrand>
-                    <Link className="font-bold text-foreground text-small sm:text-medium" href="/#">Benk <span className="text-red-500 ml-1">TechWorld</span></Link>
+                    <Link className="font-bold text-foreground text-small sm:text-medium" href="/#">
+                        Benk <span className="text-red-500 ml-1">TechWorld</span>
+                    </Link>
                 </NavbarBrand>                    
-                {menuItems.map((item:string,idx:number)=>{
+                {menuItems.map((item:MenuItem,idx:number)=>{
                     return (
-                        <NavbarItem 
-                            isActive={activeItem === item}
-                            key={`${item}-${idx}`}
-                            className="hidden sm:flex gap-4"
-                        >
-                            <Link onScroll={()=>handleItemClick(item)} onPress={()=>handleItemClick(item)} className="text-foreground" href="/#">
-                                {item}
+                        <NavbarItem isActive={activeItem === item.label} key={`${item.label}-${idx}`} className="hidden sm:flex gap-4">
+                            <Link onPress={()=>handleItemClick(item.label)} className="text-foreground" href={item.href}>
+                                {item.label}
                             </Link>
                         </NavbarItem>
                     )
                 })}
-            </NavbarContent>
+            </NavbarContent>         
             <NavbarContent justify="end">
-                <ThemeSwitcher/>
-                <NavbarItem className="sm:flex gap-1 hidden">
-                    <Button 
-                        size="sm" 
-                        radius="md" 
-                        as={Link}
-                        href="/contact" 
-                        variant="ghost"
-                        color="secondary"
-                        className="text-foreground border-1 border-foreground hover:border-0"
-                        startContent={<IoIosMail/>}
-                    >
-                        Contact
-                    </Button>                                        
-                    <Button 
-                        size="sm" 
-                        radius="md" 
-                        as={Link}
-                        href="/blog" 
-                        variant="ghost"
-                        color="primary"
-                        className="text-foreground border-1 border-foreground hover:border-0 hover:text-[#FEFEFE]"
-                        startContent={<TfiWrite/>}
-                    >
-                        Blog
-                    </Button>                    
+                <NavbarItem className="flex gap-3">
+                    <Link target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/fsociety.fu" color="secondary">
+                        <FaFacebookSquare size={22}/>
+                    </Link>                     
+                    <Link target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/arafet-ben-kilani/" color="secondary">
+                        <FaLinkedin size={22}/>
+                    </Link>                    
+                    <Link target="_blank" rel="noopener noreferrer" href="https://github.com/benk-techworld" color="secondary">
+                        <FaGithub size={22}/>
+                    </Link>
                 </NavbarItem>
-                <NavbarItem className="sm:hidden flex">
-                    <Button 
-                        size="sm" 
-                        isIconOnly 
-                        className="text-foreground border-0" 
-                        variant="bordered" 
-                    >
-                        <IoIosMail size={25}/>
-                    </Button> 
-                    <Button 
-                        size="sm" 
-                        isIconOnly 
-                        className="text-foreground border-0" 
-                        variant="bordered" 
-                    >
-                        <TfiWrite size={20}/>
-                    </Button>                                                                                     
-                </NavbarItem>    
-                <NavbarMenuToggle
-                    aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-                    className="sm:hidden"
-                />                                           
+                <ThemeSwitcher/>                                              
             </NavbarContent>
+
+            {/* Mobile Menu */}
+
+            <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="text-secondary sm:hidden"/>            
             <NavbarMenu>
-                {menuItems.map((menuItem:string,idx:number)=>{
+                {menuItems.map((menuItem:MenuItem,idx:number)=>{
                     return (
-                        <NavbarMenuItem 
-                            key={`${menuItem}-${idx}`}
-                        >
-                            <Link className="text-foreground" href="/#">
-                                {menuItem}
-                            </Link>
+                        <NavbarMenuItem key={`${menuItem.label}-${idx}`}>
+                            <Link className="text-foreground" href={menuItem.href}>{menuItem.label}</Link>
                         </NavbarMenuItem>
                     )
-                })}                                                   
-            </NavbarMenu>       
+                })
+                }                                                   
+            </NavbarMenu>  
+
         </Navbar>
     )
 }

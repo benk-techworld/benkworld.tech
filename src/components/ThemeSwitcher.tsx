@@ -1,8 +1,8 @@
 import useTheme from "@/hooks/useTheme";
 import { useEffect, useState } from "react";
 import { Switch } from "@nextui-org/react";
-import { FaMoon } from "react-icons/fa6";
-import { IoMdSunny } from "react-icons/io";
+import { IoIosMoon } from "react-icons/io";
+import { MdSunny } from "react-icons/md";
 
 export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
@@ -19,14 +19,8 @@ export default function ThemeSwitcher() {
       defaultSelected={theme === "dark"}
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
       size="sm"
-      color="secondary"
-      thumbIcon={({ isSelected, className }) =>
-        isSelected ? (
-          <IoMdSunny className={className} />
-        ) : (
-          <FaMoon className={className} />
-        )
-      }
+      startContent={<MdSunny/>}
+      endContent={<IoIosMoon/>}
     />
   );
 }

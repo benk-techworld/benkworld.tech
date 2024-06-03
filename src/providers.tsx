@@ -3,10 +3,10 @@ import {BrowserRouter} from 'react-router-dom'
 
 export default function Providers({children}: { children: React.ReactNode }) {
   return (
-    <NextUIProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <NextUIProvider>
           {children}
-      </BrowserRouter>
-    </NextUIProvider>
+      </NextUIProvider>
+    </BrowserRouter>
   )
 }
