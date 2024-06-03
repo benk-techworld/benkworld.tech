@@ -69,8 +69,8 @@ jobs:
       - name: Assume IAM Role
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-region: ${{ env.AWS_REGION }}
-          role-to-assume: ${{ env.IAM_ROLE_ARN }}          
+          aws-region: ${{ secrets.AWS_REGION }}
+          role-to-assume: ${{ secrets.IAM_ROLE_ARN }}          
       - name: Download Build Artifact
         uses: actions/download-artifact@v4
         with:
