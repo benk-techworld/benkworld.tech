@@ -1,18 +1,17 @@
 import { useState } from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem} from "@nextui-org/navbar";
 import {Link,Button} from "@nextui-org/react"
-import ThemeSwitcher from "../ThemeSwitcher";
+import ThemeSwitcher from "../../ThemeSwitcher";
 import { TfiWrite } from "react-icons/tfi";
 import { IoIosMail } from "react-icons/io";
 
  
-export default function Navigationbar() {
+export default function Navigation() {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [activeItem, setActiveItem] = useState("");
 
     const menuItems: string[] = [
-        'Home',
         "About",
         "Experience",
         "Projects",
@@ -47,7 +46,7 @@ export default function Navigationbar() {
         >        
             <NavbarContent justify="start">
                 <NavbarBrand>
-                    <Link className="font-bold text-foreground text-small sm:text-medium" href="#">Benk <span className="text-red-500 ml-1">TechWorld</span></Link>
+                    <Link className="font-bold text-foreground text-small sm:text-medium" href="/#">Benk <span className="text-red-500 ml-1">TechWorld</span></Link>
                 </NavbarBrand>                    
                 {menuItems.map((item:string,idx:number)=>{
                     return (
@@ -56,7 +55,7 @@ export default function Navigationbar() {
                             key={`${item}-${idx}`}
                             className="hidden sm:flex gap-4"
                         >
-                            <Link onScroll={()=>handleItemClick(item)} onPress={()=>handleItemClick(item)} className="text-foreground" href="#">
+                            <Link onScroll={()=>handleItemClick(item)} onPress={()=>handleItemClick(item)} className="text-foreground" href="/#">
                                 {item}
                             </Link>
                         </NavbarItem>
@@ -69,7 +68,8 @@ export default function Navigationbar() {
                     <Button 
                         size="sm" 
                         radius="md" 
-                        href="#" 
+                        as={Link}
+                        href="/contact" 
                         variant="ghost"
                         color="secondary"
                         className="text-foreground border-1 border-foreground hover:border-0"
@@ -80,7 +80,8 @@ export default function Navigationbar() {
                     <Button 
                         size="sm" 
                         radius="md" 
-                        href="#" 
+                        as={Link}
+                        href="/blog" 
                         variant="ghost"
                         color="primary"
                         className="text-foreground border-1 border-foreground hover:border-0 hover:text-[#FEFEFE]"
@@ -118,7 +119,7 @@ export default function Navigationbar() {
                         <NavbarMenuItem 
                             key={`${menuItem}-${idx}`}
                         >
-                            <Link className="text-foreground" href="#">
+                            <Link className="text-foreground" href="/#">
                                 {menuItem}
                             </Link>
                         </NavbarMenuItem>
