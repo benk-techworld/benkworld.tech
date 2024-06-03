@@ -81,9 +81,9 @@ jobs:
           name: 'dist'
           path: 'dist'
       - name: S3 Deploy
-        run: aws s3 sync ./dist/ s3://{{ secrets.S3_BUCKET }} --region {{ secrets.S3_BUCKET_REGION }} --delete
+        run: aws s3 sync ./dist/ s3://${{ secrets.S3_BUCKET }} --region ${{ secrets.S3_BUCKET_REGION }} --delete
       - name: Create Cloudfront Invalidation
-        run: aws cloudfront create-invalidation --distribution-id {{ secrets.CLOUDFRONT_DISTRO_ID }} --paths "/*"
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRO_ID }} --paths "/*"
 
 
 
