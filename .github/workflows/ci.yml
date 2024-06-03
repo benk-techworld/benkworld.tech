@@ -60,23 +60,32 @@ jobs:
     if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.website_url }}
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pages: write
+      contents: read
       id-token: write
     steps:
+      - name: Assume IAM Role
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: ${{ env.AWS_REGION }}
+          role-to-assume: ${{ env.IAM_ROLE_ARN }}          
       - name: Download Build Artifact
         uses: actions/download-artifact@v4
         with:
           name: 'dist'
           path: 'dist'
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        id: deployment
+      - name: S3 Deploy
+        uses: reggionick/s3-deploy@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          cname: benkworld.tech
+          folder: dist
+          bucket: ${{ secrets.S3_BUCKET }}
+          bucket-region: ${{ secrets.S3_BUCKET_REGION }}
+          dist-id: ${{ secrets.CLOUDFRONT_DISTRO_ID }}
+          delete-removed: true
+      - name: Set Deployment URL
+        id: deployment
+        run: echo "website_url=https://benkworld.tech" >> "$GITHUB_OUTPUT"
+
 
