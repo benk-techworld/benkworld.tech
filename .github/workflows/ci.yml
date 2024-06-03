@@ -59,8 +59,8 @@ jobs:
     needs: setup_and_build
     if: github.ref == 'refs/heads/main'
     environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.website_url }}
+      name: s3-cloudfront
+      url: https://benkworld.tech
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -70,22 +70,20 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: ${{ secrets.AWS_REGION }}
-          role-to-assume: ${{ secrets.IAM_ROLE_ARN }}          
+          role-to-assume: ${{ secrets.IAM_ROLE_ARN }}
+      - name: Setup AWS CLI
+        uses: unfor19/install-aws-cli-action@master
+        with:
+          version: 2                    
       - name: Download Build Artifact
         uses: actions/download-artifact@v4
         with:
           name: 'dist'
           path: 'dist'
       - name: S3 Deploy
-        uses: reggionick/s3-deploy@v4
-        with:
-          folder: dist
-          bucket: ${{ secrets.S3_BUCKET }}
-          bucket-region: ${{ secrets.S3_BUCKET_REGION }}
-          dist-id: ${{ secrets.CLOUDFRONT_DISTRO_ID }}
-          delete-removed: true
-      - name: Set Deployment URL
-        id: deployment
-        run: echo "website_url=https://benkworld.tech" >> "$GITHUB_OUTPUT"
+        run: aws s3 sync ./dist/ s3://{{ secrets.S3_BUCKET }} --region {{ secrets.S3_BUCKET_REGION }} --delete
+      - name: Create Cloudfront Invalidation
+        run: aws cloudfront create-invalidation --distribution-id {{ secrets.CLOUDFRONT_DISTRO_ID }} --paths "/*"
+
 
 
