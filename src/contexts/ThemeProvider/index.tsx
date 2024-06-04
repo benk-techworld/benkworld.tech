@@ -39,13 +39,23 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (
 
     useEffect(() => {
         // Add event listener for system theme changes
+
+        const handleMediaThemeChange = () => {
+
+            if (!localStorage.getItem(storageKey)) {
+                const systemTheme = getSystemTheme() as Theme
+                setTheme(systemTheme)
+                root.className = systemTheme
+            }                  
+        }
+
         const mediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
-        mediaQueryList.addEventListener("change", handleThemeChange);
+        mediaQueryList.addEventListener("change", handleMediaThemeChange);
 
         return () => {
-            mediaQueryList.removeEventListener("change",handleThemeChange);
+            mediaQueryList.removeEventListener("change",handleMediaThemeChange);
         };
-    }, [handleThemeChange]); 
+    }, [root,theme,storageKey]); 
     
 
     const value = {

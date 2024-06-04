@@ -74,8 +74,8 @@ export default function Navigation({menuItems}: NavigationProps): JSX.Element {
                     <Link target="_blank" rel="noopener noreferrer" href="https://github.com/benk-techworld" color="secondary">
                         <FaGithub size={22}/>
                     </Link>
-                </NavbarItem>
-                <ThemeSwitcher/>                                              
+                    <ThemeSwitcher/>
+                </NavbarItem>                                              
             </NavbarContent>
 
             {/* Mobile Menu */}
