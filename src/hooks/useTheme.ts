@@ -1,34 +1,13 @@
-import { useState,useCallback } from 'react';
+import { useContext } from "react";
+import { ThemeProviderContext } from "@/contexts/ThemeProvider";
 
-type Theme = 'dark' | 'light';
+export const useTheme = () => {
 
-const useTheme = (): [Theme, (theme: Theme) => void] => {
-    
-  const getInitialTheme = (): Theme => {
+    const ctx = useContext(ThemeProviderContext)
 
-    // Retrieve theme from local storage
-    const storedTheme = localStorage.getItem('theme') as Theme;
+    if (ctx === undefined)
+        throw new Error("useTheme must be used within a ThemeProvider")
 
-    if (storedTheme) {
-      return storedTheme;
-    }
+    return ctx
+}
 
-    // Determine the initial theme based on system preference
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  };
-
-  const [theme, setThemeState] = useState<Theme>(getInitialTheme());
-
-  // Apply the theme class to the document root element
-  document.documentElement.className = theme;
-
-  // Persist the theme in local storage
-  const setTheme = useCallback ((newTheme: Theme) => {
-    setThemeState(newTheme);
-    localStorage.setItem('theme', newTheme);
-  },[]);
-
-  return [theme, setTheme];
-};
-
-export default useTheme;
