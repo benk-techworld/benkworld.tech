@@ -2,6 +2,8 @@ import React, { createContext, useState,useEffect} from "react"
 import type { Theme, ThemeProviderProps,ThemeProviderState} from "./types"
 import { getSystemTheme } from "@/utils"
 
+const themes = ["dark","light"]
+
 const initialState: ThemeProviderState = {
   theme: getSystemTheme(),
   setTheme: () => null,
@@ -18,8 +20,22 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (
     }: ThemeProviderProps
 ) => {
 
+    const getInitTheme = () => {
+        try {
+            const storedTheme = localStorage.getItem(storageKey)
+            if (storedTheme && themes.includes(storedTheme)) {
+                return storedTheme as Theme
+            }
 
-    const [theme,setTheme] = useState<Theme>(()=>defaultTheme ? defaultTheme : getSystemTheme())
+        }catch (e) {
+            console.error(e)
+        }
+
+        return defaultTheme || getSystemTheme()
+
+    }
+
+    const [theme,setTheme] = useState<Theme>(getInitTheme())
 
     window.document.documentElement.className = theme
 
@@ -28,7 +44,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (
         const handleMediaThemeChange = () => {
             try {
                 const storedTheme = localStorage.getItem(storageKey)
-                if (!storedTheme && !defaultTheme) {
+                if (!storedTheme && !defaultTheme || storedTheme && !themes.includes(storedTheme)) {
                     const systemTheme = getSystemTheme() as Theme
                     setTheme(systemTheme)
                 }
@@ -61,16 +77,22 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (
 
     useEffect(() => {
         const handleStorage = (e: StorageEvent) => {
+
+            let newTheme : Theme = defaultTheme || getSystemTheme()
             if (e.key !== storageKey) {
                 return
             }
-            const newTheme = e.newValue as Theme || defaultTheme || getSystemTheme()
+
+            if (e.newValue && themes.includes(e.newValue)){
+                newTheme = e.newValue as Theme
+            }
+
             setTheme(newTheme)
         }
 
         window.addEventListener('storage', handleStorage)
         return () => window.removeEventListener('storage', handleStorage)
-    }, [setTheme,storageKey,defaultTheme])    
+    }, [storageKey,defaultTheme])    
 
     return (
         <ThemeProviderContext.Provider {...props} value={value}>
