@@ -26,7 +26,7 @@ export default function Navigation({menuItems}: NavigationProps): JSX.Element {
 
         <Navbar 
             onMenuOpenChange={setIsMenuOpen}
-            className="gradient-background border-b border-[#44424275]"
+            className="bg-background border-b border-[#44424275]"
             classNames={{
                 item: [
                     "flex",
@@ -49,7 +49,7 @@ export default function Navigation({menuItems}: NavigationProps): JSX.Element {
 
             <NavbarContent justify="start">
                 <NavbarBrand>
-                    <Link className="font-bold text-foreground text-small sm:text-medium" href="/#">
+                    <Link className="font-bold text-foreground text-[0.98em]" href="/#">
                         Benk <span className="text-red-500 ml-1">TechWorld</span>
                     </Link>
                 </NavbarBrand>                    
@@ -65,7 +65,7 @@ export default function Navigation({menuItems}: NavigationProps): JSX.Element {
             </NavbarContent>         
             <NavbarContent justify="end">
                 <NavbarItem className="flex gap-3">
-                    <Link target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/fsociety.fu" color="secondary">
+                    <Link className="hidden sm:block" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/fsociety.fu" color="secondary">
                         <FaFacebookSquare size={22}/>
                     </Link>                     
                     <Link target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/arafet-ben-kilani/" color="secondary">

@@ -1,9 +1,9 @@
-import React, { createContext, useState,useEffect,useCallback } from "react"
+import React, { createContext, useState,useEffect} from "react"
 import type { Theme, ThemeProviderProps,ThemeProviderState} from "./types"
 import { getSystemTheme } from "@/utils"
 
 const initialState: ThemeProviderState = {
-  theme: "system",
+  theme: getSystemTheme(),
   setTheme: () => null,
 }
 
@@ -12,41 +12,29 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
 const ThemeProvider: React.FC<ThemeProviderProps> = (
     {
         children,
-        defaultTheme = "system",
+        defaultTheme,
         storageKey = "theme",
         ...props
     }: ThemeProviderProps
 ) => {
 
-    const [theme,setTheme] = useState<Theme>(
-        ()=>(localStorage.getItem(storageKey) as Theme) || defaultTheme
-    )
 
-    const root = window.document.documentElement
+    const [theme,setTheme] = useState<Theme>(()=>defaultTheme ? defaultTheme : getSystemTheme())
 
-    const handleThemeChange = useCallback(() => {
-
-        let resolved = theme;
-
-        if (theme === "system") {
-            resolved = getSystemTheme();
-        }
-        root.className = resolved;
-
-    }, [root,theme]); 
-
-    handleThemeChange();
+    window.document.documentElement.className = theme
 
     useEffect(() => {
         // Add event listener for system theme changes
-
         const handleMediaThemeChange = () => {
-
-            if (!localStorage.getItem(storageKey)) {
-                const systemTheme = getSystemTheme() as Theme
-                setTheme(systemTheme)
-                root.className = systemTheme
-            }                  
+            try {
+                const storedTheme = localStorage.getItem(storageKey)
+                if (!storedTheme && !defaultTheme) {
+                    const systemTheme = getSystemTheme() as Theme
+                    setTheme(systemTheme)
+                }
+            } catch (e) {
+                console.error(e)
+            }            
         }
 
         const mediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
@@ -55,11 +43,11 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (
         return () => {
             mediaQueryList.removeEventListener("change",handleMediaThemeChange);
         };
-    }, [root,theme,storageKey]); 
+    }, [storageKey,defaultTheme]); 
     
 
     const value = {
-        theme: theme==="system" ? getSystemTheme() : theme,
+        theme,
         setTheme: (theme: Theme) => {
             setTheme(theme)
             try {
@@ -76,8 +64,8 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (
             if (e.key !== storageKey) {
                 return
             }
-            const theme = e.newValue as Theme || defaultTheme
-            setTheme(theme)
+            const newTheme = e.newValue as Theme || defaultTheme || getSystemTheme()
+            setTheme(newTheme)
         }
 
         window.addEventListener('storage', handleStorage)
