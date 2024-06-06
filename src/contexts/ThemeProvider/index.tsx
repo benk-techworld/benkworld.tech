@@ -1,15 +1,10 @@
-import React, { createContext, useState,useEffect} from "react"
-import type { Theme, ThemeProviderProps,ThemeProviderState} from "./types"
+import React, { useState,useEffect} from "react"
+import type { Theme, ThemeProviderProps} from "./types"
 import { getSystemTheme } from "@/utils"
 
 const themes : Readonly<string[]> = ["dark","light"]
 
-const initialState: ThemeProviderState = {
-  theme: getSystemTheme(),
-  setTheme: () => null,
-}
-
-const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
+import {ThemeProviderContext} from './context'
 
 const ThemeProvider: React.FC<ThemeProviderProps> = (
     {
@@ -102,4 +97,5 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (
 
 }
 
-export {ThemeProvider,ThemeProviderContext}
+
+export default ThemeProvider

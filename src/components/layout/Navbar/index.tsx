@@ -20,7 +20,7 @@ export default function Navigation(): JSX.Element {
         if (isMenuOpen) {
             setIsMenuOpen(false)
         }
-    },[location])
+    },[location]) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
 
