@@ -12,8 +12,3 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-#root {
-  min-width: 320px;
-  min-height: 100vh;
-}

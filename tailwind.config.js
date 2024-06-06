@@ -13,7 +13,7 @@ export default {
         sans: ['Poppins','Roboto','Rubik','Arial','sans-serif'],
         roboto: ['Roboto','sans-serif']
 
-      }
+      }     
     }
   },
   plugins: [
@@ -23,19 +23,38 @@ export default {
         light:{
           colors: {
             background: "#fffbff",
-            foreground: "#080708",
+            foreground: "#0a0903",
             focus: "#0E793C",
-            primary: "#F31260",
-            secondary: "#52525b",
+            primary: {
+              DEFAULT: "#F31260",
+              100:"#FED1CF",
+              200:"#FD9FA4",
+              300:"#FB6F84",
+              400:"#F74B76",
+              500:"#F31260",
+              600:"#D00D64"
+            },
+            secondary: "#41413E",
           }
         },
         dark:{
           colors: {
             background: "#0a0903",
-            foreground: "#FEFEFE",
+            foreground: {
+              DEFAULT:"#F2EDED",
+
+            },
             focus: "#12A150",
-            primary:"#52525b",
-            secondary: "#e4e4ed",
+            primary: {
+              DEFAULT:"#F31260",
+              100:"#FED1CF",
+              200:"#FD9FA4",
+              300:"#FB6F84",
+              400:"#F74B76",
+              500:"#F31260",
+              600:"#D00D64"
+            },
+            secondary: "#FBFBFB",
           }
         }
       },

@@ -41,14 +41,14 @@ export default function Navigation(): JSX.Element {
                     "data-[active=true]:after:right-0",
                     "data-[active=true]:after:h-[2px]",
                     "data-[active=true]:after:rounded-[2px]",
-                    "data-[active=true]:after:bg-red-500",                    
+                    "data-[active=true]:after:bg-primary",                    
                 ]
             }}
 
         >   
             <NavbarContent justify="start">
                 <NavbarBrand>
-                    <Link className="font-bold text-foreground text-[0.98em]" href="/">Benk <span className="text-red-500 ml-1">TechWorld</span></Link>
+                    <Link className="font-bold text-foreground text-[0.98em]" href="/">Benk <span className="text-primary ml-1">TechWorld</span></Link>
                 </NavbarBrand>
                 <NavbarContent className="hidden sm:flex gap-4">
                     <NavbarItem isActive={activeItem === "/"}>
