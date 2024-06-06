@@ -1,30 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem} from "@nextui-org/navbar";
 import {Link} from "@nextui-org/react"
+import {useLocation} from 'react-router-dom'
 import ThemeSwitcher from "../../ThemeSwitcher";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
 import { FaFacebookSquare } from "react-icons/fa";
 
-import type {MenuItem} from './types'
 
-type NavigationProps = {
-    menuItems: MenuItem[]
-}
 
-export default function Navigation({menuItems}: NavigationProps): JSX.Element {
+export default function Navigation(): JSX.Element {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const [activeItem, setActiveItem] = useState("");
+    const location = useLocation();
+    const [activeItem, setActiveItem] = useState(location.pathname);
 
-
-    const handleItemClick = (item: string) => {
-        setActiveItem(item);
-    };
+    useEffect(()=>{
+        setActiveItem(location.pathname)
+        if (isMenuOpen) {
+            setIsMenuOpen(false)
+        }
+    },[location])
 
     return (
 
         <Navbar 
+            isMenuOpen={isMenuOpen}
             onMenuOpenChange={setIsMenuOpen}
             className="bg-background border-b border-[#44424275]"
             classNames={{
@@ -45,51 +46,62 @@ export default function Navigation({menuItems}: NavigationProps): JSX.Element {
             }}
 
         >   
-            {/* Desktop Menu */}
-
             <NavbarContent justify="start">
                 <NavbarBrand>
-                    <Link className="font-bold text-foreground text-[0.98em]" href="/#">
-                        Benk <span className="text-red-500 ml-1">TechWorld</span>
-                    </Link>
-                </NavbarBrand>                    
-                {menuItems.map((item:MenuItem,idx:number)=>{
-                    return (
-                        <NavbarItem isActive={activeItem === item.label} key={`${item.label}-${idx}`} className="hidden sm:flex gap-4">
-                            <Link onPress={()=>handleItemClick(item.label)} className="text-foreground" href={item.href}>
-                                {item.label}
-                            </Link>
-                        </NavbarItem>
-                    )
-                })}
+                    <Link className="font-bold text-foreground text-[0.98em]" href="/">Benk <span className="text-red-500 ml-1">TechWorld</span></Link>
+                </NavbarBrand>
+                <NavbarContent className="hidden sm:flex gap-4">
+                    <NavbarItem isActive={activeItem === "/"}>
+                        <Link className="text-foreground" href="/">Home</Link>
+                    </NavbarItem>                                 
+                    <NavbarItem isActive={activeItem === "/about"}>
+                        <Link className="text-foreground" href="/about">About</Link>
+                    </NavbarItem>  
+                    <NavbarItem isActive={activeItem === "/contact"}>
+                        <Link className="text-foreground" href="/contact">Contact</Link>
+                    </NavbarItem>
+                    <NavbarItem isActive={activeItem === "/blog"}>
+                        <Link className="text-foreground" href="/blog">Blog</Link>
+                    </NavbarItem>    
+                </NavbarContent>                                                                
             </NavbarContent>         
-            <NavbarContent justify="end">
-                <NavbarItem className="flex gap-3">
-                    <Link className="hidden sm:block" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/fsociety.fu" color="secondary">
+
+            <NavbarContent className="flex gap-3" justify="end">
+                <NavbarItem className="hidden sm:flex">
+                    <Link target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/fsociety.fu" color="secondary">
                         <FaFacebookSquare size={22}/>
-                    </Link>                     
+                    </Link>
+                </NavbarItem> 
+                <NavbarItem >
                     <Link target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/arafet-ben-kilani/" color="secondary">
                         <FaLinkedin size={22}/>
-                    </Link>                    
+                    </Link>  
+                </NavbarItem>
+                <NavbarItem >
                     <Link target="_blank" rel="noopener noreferrer" href="https://github.com/benk-techworld" color="secondary">
                         <FaGithub size={22}/>
                     </Link>
+                </NavbarItem> 
+                <NavbarItem >
                     <ThemeSwitcher/>
-                </NavbarItem>                                              
+                </NavbarItem>                                                                        
             </NavbarContent>
 
             {/* Mobile Menu */}
-
             <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="text-secondary sm:hidden"/>            
             <NavbarMenu>
-                {menuItems.map((menuItem:MenuItem,idx:number)=>{
-                    return (
-                        <NavbarMenuItem key={`${menuItem.label}-${idx}`}>
-                            <Link className="text-foreground" href={menuItem.href}>{menuItem.label}</Link>
-                        </NavbarMenuItem>
-                    )
-                })
-                }                                                   
+                <NavbarMenuItem>
+                    <Link className="text-foreground" href="/">Home</Link>
+                </NavbarMenuItem>                 
+                <NavbarMenuItem>
+                    <Link className="text-foreground" href="/about">About</Link>
+                </NavbarMenuItem>  
+                <NavbarMenuItem>
+                    <Link className="text-foreground" href="/contact">Contact</Link>
+                </NavbarMenuItem>
+                <NavbarMenuItem>
+                    <Link className="text-foreground" href="/blog">Blog</Link>
+                </NavbarMenuItem>                                                                                          
             </NavbarMenu>  
 
         </Navbar>

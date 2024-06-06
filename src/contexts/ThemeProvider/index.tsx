@@ -2,7 +2,7 @@ import React, { createContext, useState,useEffect} from "react"
 import type { Theme, ThemeProviderProps,ThemeProviderState} from "./types"
 import { getSystemTheme } from "@/utils"
 
-const themes = ["dark","light"]
+const themes : Readonly<string[]> = ["dark","light"]
 
 const initialState: ThemeProviderState = {
   theme: getSystemTheme(),
