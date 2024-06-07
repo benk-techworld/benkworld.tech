@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem} from "@nextui-org/navbar";
 import {Link} from "@nextui-org/react"
 import {useLocation} from 'react-router-dom'
-import ThemeSwitcher from "../../ThemeSwitcher";
+import ThemeSwitcher from "@/components/ui/ThemeSwitcher/ThemeSwitcher";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
 import { FaFacebookSquare } from "react-icons/fa";
@@ -27,7 +27,7 @@ export default function Navigation(): JSX.Element {
         <Navbar 
             isMenuOpen={isMenuOpen}
             onMenuOpenChange={setIsMenuOpen}
-            className="bg-background border-b border-[#44424275]"
+            className="bg-background"
             classNames={{
                 item: [
                     "flex",

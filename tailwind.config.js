@@ -11,7 +11,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Roboto','Poppins','Rubik','Arial','sans-serif'],
-        roboto: ['Roboto','sans-serif']
+        poppins: ['Poppins','sans-serif']
       },
       keyframes: {
         slidein: {
@@ -91,7 +91,8 @@ export default {
       colors: {
 
       }
-    })
+    }),
+    
   ],
   darkMode: "class"
 }
