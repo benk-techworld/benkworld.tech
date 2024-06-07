@@ -10,10 +10,24 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Poppins','Roboto','Rubik','Arial','sans-serif'],
+        sans: ['Roboto','Poppins','Rubik','Arial','sans-serif'],
         roboto: ['Roboto','sans-serif']
-
-      }     
+      },
+      keyframes: {
+        slidein: {
+          from: {
+            opacity: "0",
+            transform: "translateY(-15px)",
+          },
+          to: {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+      },
+      animation: {
+        slidein: "slidein 2s ease",
+      },
     }
   },
   plugins: [
@@ -23,10 +37,19 @@ export default {
         light:{
           colors: {
             background: "#fffbff",
-            foreground: "#0a0903",
+            foreground: {
+              DEFAULT: "#18181b",
+              100:"#e4e4e7",
+              200:"#d4d4d8",
+              300:"#a1a1aa",
+              400:"#71717a",
+              500:"#52525b",
+              600:"#3f3f46",
+              700:"#27272a"
+            },
             focus: "#0E793C",
             primary: {
-              DEFAULT: "#F31260",
+              DEFAULT:"#F31260",
               100:"#FED1CF",
               200:"#FD9FA4",
               300:"#FB6F84",
@@ -41,7 +64,14 @@ export default {
           colors: {
             background: "#0a0903",
             foreground: {
-              DEFAULT:"#F2EDED",
+              DEFAULT:"#fafafa",
+              100:"#27272a",
+              200:"#3f3f46",
+              300:"#52525b",
+              400:"#71717a",
+              500:"#d4d4d8",
+              600:"#e4e4e7",
+              700:"#f4f4f5"
 
             },
             focus: "#12A150",

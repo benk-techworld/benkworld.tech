@@ -12,11 +12,11 @@ export default function Home(): JSX.Element {
                         <img src="avatar.jpg" alt="Adrian Cantrill" className="w-full h-full object-cover" />
                     </div>
                 </div> 
-                <div className="mt-8 px-4 flex flex-col items-center text-center">
-                    <h1 className="text-3xl md:text-4xl">Hi there!</h1>
-                    <p className="sm:w-3/4 sm:5/6 md:w-3/4 lg:w-1/2 mt-4 text-foreground text-sm md:text-md lg:text-lg font-roboto font-normal">
+                <div className="flex flex-col items-center px-2 mt-14 text-center animate-slidein">
+                    <h1 className="text-3xl md:text-4xl font-normal">Hi there!</h1>
+                    <p className="w-full md:w-2/3 lg:w-1/2 text-foreground-700 text-base lg:text-lg mt-6 font-roboto font-light typing">
                         My name is Arafet Ben Kilani, a recent DevSecOps engineering graduate from Tunisia. 
-                        I specialize in Cloud, Security, DevOps, and other emerging technologies. If I can assist you in any way, please don't hesitate to contact me.
+                        I specialize in Cloud, Security, DevOps, and other emerging technologies. 
                     </p>
                 </div>
             </section>                                                                  
