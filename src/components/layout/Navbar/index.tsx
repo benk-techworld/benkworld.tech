@@ -90,16 +90,16 @@ export default function Navigation(): JSX.Element {
             <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="text-secondary sm:hidden"/>            
             <NavbarMenu>            
                 <NavbarMenuItem>
-                    <Link color="secondary" href="/about">About</Link>
+                    <Link onClick={()=>setIsMenuOpen(false)} color="secondary" href="/about">About</Link>
                 </NavbarMenuItem>
                 <NavbarMenuItem>
-                    <Link color="secondary" href="/resume">Resume</Link>
+                    <Link onClick={()=>setIsMenuOpen(false)} color="secondary" href="/resume">Resume</Link>
                 </NavbarMenuItem>                    
                 <NavbarMenuItem>
-                    <Link color="secondary" href="/projects">Projects</Link>
+                    <Link onClick={()=>setIsMenuOpen(false)} color="secondary" href="/projects">Projects</Link>
                 </NavbarMenuItem>
                 <NavbarMenuItem>
-                    <Link color="secondary" href="/contact">Contact</Link>
+                    <Link onClick={()=>setIsMenuOpen(false)} color="secondary" href="/contact">Contact</Link>
                 </NavbarMenuItem>                                                                                                      
             </NavbarMenu>  
 
