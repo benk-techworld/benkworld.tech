@@ -1,6 +1,6 @@
-import Palestine from "@/components/utils/Palestine";
+import {Palestine} from "@/components/utils/Banners";
 
-const Banner: React.FC = () => {
+const Header: React.FC = () => {
     return (
         <header className="flex items-center min-w-screen h-12 border-b-1 border-b-foreground-100">
             <Palestine/>
@@ -8,4 +8,4 @@ const Banner: React.FC = () => {
     )
 }
 
-export default Banner;
+export default Header;

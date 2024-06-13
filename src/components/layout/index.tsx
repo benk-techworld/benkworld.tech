@@ -1,16 +1,13 @@
 import Navigation from "./Navbar";
-import Footer from "./Footer";
-import Banner from "./Banner";
-import { Outlet } from "react-router";
-
+// import Header from "./Header";
+import { Outlet} from "react-router-dom";
 
 export default function Layout(): JSX.Element {
     return (
-        <div className="flex flex-col min-h-screen">
-            <Banner/>
+        <div className="flex flex-col min-w-screen min-h-screen">
+            {/* <Header/> */}
             <Navigation/>
-            <main className="flex-1"><Outlet/></main>
-            <Footer/>
+            <Outlet/>
         </div>
     )
 }

@@ -49,20 +49,20 @@ export default {
             },
             focus: "#0E793C",
             primary: {
-              DEFAULT:"#F31260",
-              100:"#FED1CF",
-              200:"#FD9FA4",
-              300:"#FB6F84",
-              400:"#F74B76",
-              500:"#F31260",
-              600:"#D00D64"
+              DEFAULT:"#61349c",
+              100:"#D00D64",
+              200:"#F31260",
+              300:"#F74B76",
+              400:"#FB6F84",
+              500:"#FD9FA4",
+              600:"#FED1CF"
             },
             secondary: "#41413E",
           }
         },
         dark:{
           colors: {
-            background: "#0a0903",
+            background: "#1E1E1E",
             foreground: {
               DEFAULT:"#fafafa",
               100:"#27272a",
@@ -76,7 +76,7 @@ export default {
             },
             focus: "#12A150",
             primary: {
-              DEFAULT:"#F31260",
+              DEFAULT:"#6d52aa",
               100:"#FED1CF",
               200:"#FD9FA4",
               300:"#FB6F84",
@@ -88,9 +88,6 @@ export default {
           }
         }
       },
-      colors: {
-
-      }
     }),
     
   ],

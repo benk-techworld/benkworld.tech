@@ -1,10 +1,9 @@
-import React, { useState,useEffect} from "react"
+import React, { useState,useEffect,useLayoutEffect} from "react"
 import type { Theme, ThemeProviderProps} from "./types"
+import {ThemeProviderContext} from './index'
 import { getSystemTheme } from "@/utils"
 
 const themes : Readonly<string[]> = ["dark","light"]
-
-import {ThemeProviderContext} from './context'
 
 const ThemeProvider: React.FC<ThemeProviderProps> = (
     {
@@ -30,9 +29,12 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (
 
     }
 
-    const [theme,setTheme] = useState<Theme>(getInitTheme())
+    const [theme,setTheme] = useState<Theme>(getInitTheme)
 
-    window.document.documentElement.className = theme
+
+    useLayoutEffect(()=>{
+        window.document.documentElement.className = theme
+    },[theme])
 
     useEffect(() => {
         // Add event listener for system theme changes
@@ -98,4 +100,5 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (
 }
 
 
-export default ThemeProvider
+
+export default ThemeProvider;

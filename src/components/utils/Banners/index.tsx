@@ -1,6 +1,6 @@
 import ReactCountryFlag from "react-country-flag"
 
-const Palestine: React.FC = () => {
+export const Palestine: React.FC = () => {
     return (
         <div className="flex justify-center items-center gap-2 w-full">
             <ReactCountryFlag countryCode="PS" svg/>
@@ -8,5 +8,3 @@ const Palestine: React.FC = () => {
         </div>
     )
 }
-
-export default Palestine;
