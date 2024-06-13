@@ -13,21 +13,6 @@ export default {
         sans: ['Roboto','Poppins','Rubik','Arial','sans-serif'],
         poppins: ['Poppins','sans-serif']
       },
-      keyframes: {
-        slidein: {
-          from: {
-            opacity: "0",
-            transform: "translateY(-15px)",
-          },
-          to: {
-            opacity: "1",
-            transform: "translateY(0)",
-          },
-        },
-      },
-      animation: {
-        slidein: "slidein 2s ease",
-      },
     }
   },
   plugins: [
@@ -47,17 +32,20 @@ export default {
               600:"#3f3f46",
               700:"#27272a"
             },
-            focus: "#0E793C",
             primary: {
               DEFAULT:"#61349c",
-              100:"#D00D64",
-              200:"#F31260",
-              300:"#F74B76",
-              400:"#FB6F84",
-              500:"#FD9FA4",
-              600:"#FED1CF"
+              100:"#DBECF0",
+              200:"#C3D8E5",
+              300:"#ACC0DA",
+              400:"#7E83C3",
+              500:"#6D52AA",
+              600:"#704696",
+              700:"#6F3B82",
+              800:"#6A306D",
+              900:"#582650",
             },
-            secondary: "#41413E",
+            secondary: "#1E1E1E",
+            focus: "#0E793C",
           }
         },
         dark:{
@@ -69,22 +57,27 @@ export default {
               200:"#3f3f46",
               300:"#52525b",
               400:"#71717a",
-              500:"#d4d4d8",
-              600:"#e4e4e7",
-              700:"#f4f4f5"
+              500:"#6D52AA",
+              600:"#704696",
+              700:"#6F3B82",
+              800:"#6A306D",
+              900:"#582650",
 
             },
-            focus: "#12A150",
             primary: {
-              DEFAULT:"#6d52aa",
-              100:"#FED1CF",
-              200:"#FD9FA4",
-              300:"#FB6F84",
-              400:"#F74B76",
-              500:"#F31260",
-              600:"#D00D64"
+              DEFAULT:"#7E83C3",
+              100:"#582650",
+              200:"#6A306D",
+              300:"#6F3B82",
+              400:"#704696",
+              500:"#6D52AA",
+              600:"#7168B7",
+              700:"#7E83C3",
+              800:"#95A3CF",
+              900:"#ACC0DA",
             },
-            secondary: "#FBFBFB",
+            secondary: "#fffbff",
+            focus: "#12A150",
           }
         }
       },

@@ -3,12 +3,10 @@ import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, Navbar
 import {Link} from "@nextui-org/react"
 import {useLocation} from 'react-router-dom'
 import ThemeSwitcher from "@/components/ui/ThemeSwitcher/ThemeSwitcher";
-import { FaGithub } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa6";
-import { FaFacebookSquare } from "react-icons/fa";
 import { FaBloggerB } from "react-icons/fa6";
 
 import logo from '@/assets/logo.svg'
+import Social from "@/components/ui/Social";
 
 export default function Navigation(): JSX.Element {
 
@@ -44,7 +42,7 @@ export default function Navigation(): JSX.Element {
                         <h1 className="text-secondary font-bold text-[0.98em]" >Benk <span className="text-primary">TechWorld</span></h1>
                     </Link>
                 </NavbarBrand>                          
-                <NavbarContent className="hidden sm:flex gap-3" justify="center">                               
+                <NavbarContent className="hidden sm:flex gap-4" justify="center">                               
                     <NavbarItem isActive={location.pathname === "/about"}>
                         <Link color="secondary" href="/about">About</Link>
                     </NavbarItem>
@@ -59,24 +57,14 @@ export default function Navigation(): JSX.Element {
                     </NavbarItem>                      
                 </NavbarContent>   
 
-            <NavbarContent className="flex gap-2" justify="end">
-                <NavbarItem>
-                    <Link className="hidden sm:flex" isExternal href="https://www.facebook.com/fsociety.fu" color="secondary">
-                        <FaFacebookSquare size={21}/>
-                    </Link>
-                    <Link className="flex sm:hidden" href="/blog" color="secondary">
-                        <FaBloggerB size={21}/>
-                    </Link>                    
-                </NavbarItem> 
-                <NavbarItem className="hidden sm:flex" >
-                    <Link isExternal href="https://www.linkedin.com/in/arafet-ben-kilani/" color="secondary">
-                        <FaLinkedin size={21}/>
-                    </Link>  
+            <NavbarContent className="flex gap-1" justify="end">
+                <NavbarItem className="hidden sm:flex">
+                    <Social containerStyles="flex gap-1" color="secondary"/>
                 </NavbarItem>
-                <NavbarItem className="hidden sm:flex" >
-                    <Link isExternal href="https://github.com/benk-techworld" color="secondary">
-                        <FaGithub size={21}/>
-                    </Link>
+                <NavbarItem className="flex sm:hidden">
+                    <Link href="/blog" color="secondary">
+                        <FaBloggerB size={19}/>
+                    </Link>                    
                 </NavbarItem> 
                 <NavbarItem >
                     <ThemeSwitcher/>
