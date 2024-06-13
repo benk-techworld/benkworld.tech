@@ -39,7 +39,7 @@ export default function Navigation(): JSX.Element {
 
         >  
                 <NavbarBrand>
-                    <Link href="/">
+                    <Link onClick={()=>{if (isMenuOpen) setIsMenuOpen(false)}} href="/">
                         <img src={logo} className="mr-2 w-8" alt="Logo" />
                         <h1 className="text-secondary font-bold text-[0.98em]" >Benk <span className="text-primary">TechWorld</span></h1>
                     </Link>
