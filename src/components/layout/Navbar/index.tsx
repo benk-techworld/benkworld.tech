@@ -50,9 +50,6 @@ export default function Navigation(): JSX.Element {
                     </NavbarItem>
                     <NavbarItem isActive={location.pathname === "/resume"}>
                         <Link color="secondary" href="/resume">Resume</Link>
-                    </NavbarItem> 
-                    <NavbarItem isActive={location.pathname === "/projects"}>
-                        <Link color="secondary" href="/projects">Projects</Link>
                     </NavbarItem>                                            
                     <NavbarItem isActive={location.pathname === "/contact"}>
                         <Link color="secondary" href="/contact">Contact</Link>
@@ -95,9 +92,6 @@ export default function Navigation(): JSX.Element {
                 <NavbarMenuItem>
                     <Link onClick={()=>setIsMenuOpen(false)} color="secondary" href="/resume">Resume</Link>
                 </NavbarMenuItem>                    
-                <NavbarMenuItem>
-                    <Link onClick={()=>setIsMenuOpen(false)} color="secondary" href="/projects">Projects</Link>
-                </NavbarMenuItem>
                 <NavbarMenuItem>
                     <Link onClick={()=>setIsMenuOpen(false)} color="secondary" href="/contact">Contact</Link>
                 </NavbarMenuItem>                                                                                                      
