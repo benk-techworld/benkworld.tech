@@ -18,7 +18,7 @@ export default function Navigation(): JSX.Element {
         <Navbar 
             isMenuOpen={isMenuOpen}
             onMenuOpenChange={setIsMenuOpen}
-            className="bg-background"
+            isBlurred
             classNames={{
                 item: [
                     "flex",

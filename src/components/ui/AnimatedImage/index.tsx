@@ -1,23 +1,26 @@
 import { Image,ImageProps as NextImageProps } from "@nextui-org/react"
-import { motion,Variants } from 'framer-motion';
+import { motion,Variants,Transition } from 'framer-motion';
 
 interface AnimatedImageProps extends NextImageProps {
-    imagevariants : Variants
+    motionvariants : Variants
+    motionTransition?: Transition
+    motionStyles?: string
 }
 
-const AnimatedImage : React.FC<AnimatedImageProps> = ({imagevariants,...rest} : AnimatedImageProps) => {
+const AnimatedImage : React.FC<AnimatedImageProps> = ({motionvariants,motionTransition,motionStyles,...rest} : AnimatedImageProps) => {
 
     return (
 
         <motion.div
-            variants={imagevariants}
+            variants={motionvariants}
             initial="initial"
             animate="animate"
             whileHover="hover"
             whileTap="tap"
             whileFocus="focus"
             whileInView="view"
-            transition={{duration: 1}}       
+            transition={motionTransition}
+            className={motionStyles}       
         >
             <Image {...rest}/>
         </motion.div>
