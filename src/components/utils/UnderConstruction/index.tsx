@@ -1,6 +1,6 @@
 import { LuConstruction } from "react-icons/lu";
 
-export default function Construction() {
+export default function UnderConstruction() {
     return (
         <div className="flex flex-col items-center gap-2 absolute w-screen top-1/2 -translate-y-1/2">
             <LuConstruction className="text-[70px] sm:text-[100px] text-foreground"/>

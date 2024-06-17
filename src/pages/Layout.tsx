@@ -1,4 +1,4 @@
-import Navigation from "./Navbar";
+import Navigation from "@/components/layout/Navbar";
 // import Header from "./Header";
 import { Outlet} from "react-router-dom";
 
@@ -8,10 +8,12 @@ import StairTransition from "@/animations/StairTransition";
 export default function Layout(): JSX.Element {
 
     return (
-        <div className="flex flex-col min-w-screen min-h-screen">
+        <>
             <Navigation/>
             <StairTransition/>
-            <PageTransition><Outlet/></PageTransition>
-        </div>
+            <PageTransition>
+                <Outlet/>
+            </PageTransition>
+        </>
     )
 }

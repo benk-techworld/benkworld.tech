@@ -6,11 +6,11 @@ const PageTransition = ({children}:{children:React.ReactNode}) => {
     const {pathname} = useLocation()
 
     return (
-        <AnimatePresence>
+        <AnimatePresence initial={false}>
             <motion.div key={pathname}> 
                 <motion.div
                     initial={{opacity: 1}}
-                    animate={{ opacity: 0, transition: {delay: 2, duration: 1, ease: "easeInOut"} }}
+                    animate={{ opacity: 0, transition: {delay: 1, duration: 0.4, ease: "easeInOut"} }}
                     className="h-screen w-screen fixed bg-background top-0 pointer-events-none"
                 />                    
                 {children}

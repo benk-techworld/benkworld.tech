@@ -4,6 +4,8 @@ import {Link} from "@nextui-org/react"
 import {useLocation} from 'react-router-dom'
 import ThemeSwitcher from "@/components/ui/ThemeSwitcher/ThemeSwitcher";
 import { FaBloggerB } from "react-icons/fa6";
+import { IoIosMoon } from "react-icons/io";
+import { MdSunny } from "react-icons/md";
 
 import logo from '@/assets/logo.svg'
 import Social from "@/components/ui/Social";
@@ -34,6 +36,7 @@ export default function Navigation(): JSX.Element {
                     "data-[active=true]:after:bg-primary",
                 ]
             }}
+            maxWidth="xl"
 
         >  
                 <NavbarBrand>
@@ -59,7 +62,7 @@ export default function Navigation(): JSX.Element {
 
             <NavbarContent className="flex gap-1" justify="end">
                 <NavbarItem className="hidden sm:flex">
-                    <Social containerStyles="flex gap-1" color="secondary"/>
+                    <Social containerStyles="flex gap-2" color="secondary"/>
                 </NavbarItem>
                 <NavbarItem className="flex sm:hidden">
                     <Link href="/blog" color="secondary">
@@ -67,7 +70,11 @@ export default function Navigation(): JSX.Element {
                     </Link>                    
                 </NavbarItem> 
                 <NavbarItem >
-                    <ThemeSwitcher/>
+                    <ThemeSwitcher 
+                        darkIcon={<IoIosMoon size={21}/>} 
+                        lightIcon={<MdSunny size={21}/>}
+                        className="bg-transparent active:bg-foreground-200 p-[0.39rem] rounded-full"
+                    />
                 </NavbarItem>                                                                        
             </NavbarContent>
 

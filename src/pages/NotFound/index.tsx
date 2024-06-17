@@ -1,4 +1,11 @@
+import { useLayoutEffect } from "react";
+
 export default function NotFound(): JSX.Element {
+
+    useLayoutEffect(()=>{
+        document.title = "Not Found | Arafet Techworld"
+    },[])
+        
     const Messages = [
         "Oh no! We can't seal the deal!",
         "We can't seal with it!",

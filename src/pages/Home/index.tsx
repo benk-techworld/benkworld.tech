@@ -2,9 +2,10 @@ import AnimatedImage from '@/components/ui/AnimatedImage';
 import { Button, Spacer } from '@nextui-org/react';
 import avatar from '@/assets/avatar_v2.jpg'
 import { Variants } from 'framer-motion';
-import Social from '@/components/ui/Social';
+// import Social from '@/components/ui/Social';
 import {motion} from 'framer-motion';
 import { IoMdDownload } from "react-icons/io";
+import { useLayoutEffect } from 'react';
 // import Stats from '@/components/ui/Stats';
 
 // const fadeInScaleVariant: Variants = {
@@ -13,21 +14,21 @@ import { IoMdDownload } from "react-icons/io";
 // };
 
 const slideInLeftVariant: Variants = {
-  initial: { x: -100, opacity: 0 },
-  animate: { x: 0, opacity: 1, transition: { duration: 0.4, delay: 2.4, ease: "linear"} },
+  initial: { y: -100, opacity: 0 },
+  animate: { y: 0, opacity: 1, transition: { duration: 0.4, delay: 2.4, ease: "linear"} },
   hover: { rotate: 360, transition: {duration: 1, ease: "easeInOut"} },
   tap: {rotate: 360, transition: {duration: 1, ease: "easeInOut"}}
 };
 
 
 const shakeAnimation : Variants = {
-    initial: { x: 0 },
+    initial: { y: 0 },
     shake: {
-        x: [0, -10, 10,-10 ,10, 0],
+        y: [0, -10, 10,-10 ,10, 0],
         transition: {
             delay: 2.4,
             duration: 0.5,
-            ease: "linear",
+            ease: "easeInOut",
         },
     },
 };
@@ -35,63 +36,68 @@ const shakeAnimation : Variants = {
 
 export default function Home(): JSX.Element {
 
+    useLayoutEffect(()=>{
+        document.title = "Home | Arafet Techworld"
+    },[])
+
     return (
-        <div className="h-[calc(100vh-4rem)]">
-            <Spacer y={16}/>
-            <section className="container mx-auto h-full">
-                <div className="flex flex-col xl:flex-row items-center justify-evenly gap-4 xl:gap-0 xl:pt-24 xl:pb-24">
+        <main className="h-[calc(100vh-4rem)]">
+            <section className="container h-full mx-auto flex items-center">
+                <div className="w-full flex flex-col xl:flex-row items-center justify-evenly xl:pt-24 xl:pb-24">
                     <div className="text-center xl:text-left mt-1 xl:mt-0 order-2 xl:order-none">
-                        <h1 className="text-[28px] sm:text-[48px] leading-[1.1] xl:text-[80px] font-semibold mb-6">
-                            Hi there! <br/> <Spacer y={2} /> I'm <span className="text-primary"> Arafet BenKilani </span>
+                        <h2 className='font-light text-[24px] sm:text-[32px] mb-1'>Hi there!</h2>
+                        <h1 className="font-light text-[26px] sm:text-[48px] leading-[1.3] sm:leading-[1.1] xl:text-[60px] mb-4">
+                            I'm <span className="text-foreground font-bold"> Arafet BenKilani </span> <br/> 
+                            a Cloud DevSecOps Engineer.
                         </h1>
-                        <p 
-                            className="text-sm sm:text-lg max-w-[650px] text-secondary/80"
-                        >
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem vitae necessitatibus nostrum quis, 
-                            magnam praesentium nam modi vel nemo nobis at dolorem maxime quae reprehenderit harum, commodi sapiente ut porro!
+                        <p className='font-light text-sm sm:text-xl max-w-[650px] text-foreground/90'>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis impedit dolores sapiente nam reiciendis dolorem eligendi, 
+                            laboriosam asperiores blanditiis, accusamus, dicta nobis et sed numquam.
                         </p>
                         <Spacer y={8}/>
                         <motion.div 
-                            className='flex flex-col xl:flex-row items-center gap-8 mb-8 xl:mb-0'
                             initial={{opacity: 0}}
                             animate={{opacity: 1, transition: {duration: 0.4, delay: 2.4, ease : "easeInOut"}}}
                         >
-                            <motion.button
+                            <motion.div
                                 initial="initial"
                                 animate="shake"
                                 variants={shakeAnimation}
+                                className='flex gap-4 justify-center xl:justify-start'
                             >
                                 <Button 
-                                    variant='bordered' 
+                                    size='md'
                                     color='primary' 
-                                    className='font-semibold'
+                                    className='font-bold'
+                                    radius='sm'
                                     endContent={<IoMdDownload size={15}/>}
                                 >
                                     Download CV
                                 </Button>
-                            </motion.button>
-                            <motion.div 
-                                initial="initial"
-                                animate="shake"
-                                variants={shakeAnimation}
-                                className='flex sm:hidden'
-                            >
-                                <Social containerStyles='flex gap-4' color='secondary'/>
+                                <Button 
+                                    size='md'
+                                    className='bg-foreground text-background font-bold'
+                                    radius='sm'
+                                >
+                                    Hire Me
+                                </Button>                                
                             </motion.div>
                         </motion.div>                        
                     </div>
-                    <AnimatedImage
-                        motionvariants={slideInLeftVariant}
-                        motionTransition={{duration: 1}}
-                        src={avatar}
-                        alt='Arafet BenKilani'
-                        radius='full'
-                        isBlurred
-                        className='order-1 xl:order-none border-4 border-primary w-[120px] xl:w-[270px] mb-5 xl:mb-0'
-                    />
+                    <div>
+                        <AnimatedImage
+                            motionvariants={slideInLeftVariant}
+                            motionTransition={{duration: 1}}
+                            src={avatar}
+                            alt='Arafet BenKilani'
+                            radius='full'
+                            isBlurred
+                            className='xl:order-none w-[120px] xl:w-[270px] mb-5 xl:mb-0'
+                        />                       
+                    </div>
                 </div>
                 {/* <Stats/> */}
             </section>
-        </div>
+        </main>
     );
 }

@@ -11,7 +11,8 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Roboto','Poppins','Rubik','Arial','sans-serif'],
-        poppins: ['Poppins','sans-serif']
+        poppins: ['Poppins','sans-serif'],
+        rubik: ['Rubik','sans-serif'],
       },
     }
   },

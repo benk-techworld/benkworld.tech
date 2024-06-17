@@ -1,9 +1,13 @@
 import {useTheme} from "@/contexts/ThemeProvider/index"
 // import {Button} from "@nextui-org/react"
-import { IoIosMoon } from "react-icons/io";
-import { MdSunny } from "react-icons/md";
 
-export default function ThemeSwitcher() {
+type ThemeSwitcherProps = {
+  className?: string
+  lightIcon: React.ReactNode
+  darkIcon: React.ReactNode
+}
+
+export default function ThemeSwitcher({className,lightIcon,darkIcon} : ThemeSwitcherProps) {
 
   const {theme,setTheme} = useTheme();
 
@@ -12,13 +16,8 @@ export default function ThemeSwitcher() {
   }
   
   return (
-      <button 
-        onClick={toggleTheme} 
-        className="bg-transparent active:bg-foreground-200 p-[0.39rem] rounded-full"
-      >
-        {theme === "dark" ? <MdSunny className="text-secondary" size={21}/> : 
-        <IoIosMoon className="text-secondary" size={21}/>
-        }
+      <button onClick={toggleTheme} className={className}>
+        {theme === "dark" ? lightIcon : darkIcon}
       </button>      
   );
 }

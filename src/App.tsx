@@ -1,7 +1,7 @@
 import {Routes,Route,useNavigate} from 'react-router-dom'
 import {NextUIProvider} from '@nextui-org/react'
 // import Construction from '@/components/utils/Construction'
-import Layout from "@/components/layout";
+import Layout from "@/pages/Layout";
 import Home from '@/pages/Home';
 import Blog from "@/pages/Blog";
 import Contact from "@/pages/Contact";
@@ -15,7 +15,7 @@ function App() {
   const navigate = useNavigate();
   
   return (
-      <NextUIProvider navigate={navigate}>
+      <NextUIProvider navigate={navigate} className='min-h-screen'>
           <Routes>
             <Route path="/" element={<Layout/>}>
               <Route index element={<Home/>}/>
