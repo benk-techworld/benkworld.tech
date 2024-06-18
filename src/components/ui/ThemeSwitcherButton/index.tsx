@@ -1,13 +1,12 @@
+import { ComponentProps } from "react"
 import {useTheme} from "@/contexts/ThemeProvider/index"
-// import {Button} from "@nextui-org/react"
 
-type ThemeSwitcherProps = {
-  className?: string
+type ThemeSwitcherProps = ComponentProps<'button'> & {
   lightIcon: React.ReactNode
   darkIcon: React.ReactNode
 }
 
-export default function ThemeSwitcher({className,lightIcon,darkIcon} : ThemeSwitcherProps) {
+export default function ThemeSwitcherButton({className,lightIcon,darkIcon,...rest} : ThemeSwitcherProps) {
 
   const {theme,setTheme} = useTheme();
 
@@ -16,7 +15,7 @@ export default function ThemeSwitcher({className,lightIcon,darkIcon} : ThemeSwit
   }
   
   return (
-      <button onClick={toggleTheme} className={className}>
+      <button onClick={toggleTheme} className={className} {...rest}>
         {theme === "dark" ? lightIcon : darkIcon}
       </button>      
   );
