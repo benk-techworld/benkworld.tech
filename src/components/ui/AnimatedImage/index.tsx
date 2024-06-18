@@ -7,7 +7,7 @@ interface AnimatedImageProps extends NextImageProps {
     motionStyles?: string
 }
 
-const AnimatedImage : React.FC<AnimatedImageProps> = ({motionvariants,motionTransition,motionStyles,...rest} : AnimatedImageProps) => {
+const AnimatedImage : React.FC<AnimatedImageProps> = ({motionvariants,motionTransition,motionStyles,...rest}) => {
 
     return (
 

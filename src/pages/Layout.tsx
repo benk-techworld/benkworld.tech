@@ -1,5 +1,4 @@
 import Navigation from "@/components/layout/Navbar";
-// import Header from "./Header";
 import { Outlet} from "react-router-dom";
 
 import PageTransition from "@/animations/PageTransition";

@@ -1,5 +1,5 @@
-import { FaGithub,FaFacebookSquare,FaLinkedin } from "react-icons/fa";
 import {Link,LinkProps} from '@nextui-org/react'
+import { Icon } from "@iconify/react";
 
 type Social = {
     icon: React.ReactNode
@@ -8,15 +8,15 @@ type Social = {
 
 const socials: Social[] = [
     {
-        icon: <FaGithub size={21}/>,
+        icon: <Icon icon="uil:github" width={26} />,
         path: "https://github.com/benk-techworld"
     },
     {
-        icon: <FaFacebookSquare size={21}/>,
+        icon: <Icon icon="ic:sharp-facebook" width={26} />,
         path: "https://www.facebook.com/fsociety.fu"
     },
     {
-        icon: <FaLinkedin size={21}/>,
+        icon: <Icon icon="entypo-social:linkedin-with-circle" width={24} />,
         path: "https://www.linkedin.com/in/arafet-ben-kilani/"
     },        
 ]
@@ -26,7 +26,7 @@ interface SocialProps extends LinkProps {
     containerStyles: string
 }
 
-export default function Social({containerStyles,...rest} : SocialProps) {
+const Social: React.FC<SocialProps> = ({containerStyles,...rest}) => {
 
     return (
         <div className={containerStyles}>
@@ -40,3 +40,5 @@ export default function Social({containerStyles,...rest} : SocialProps) {
         </div>
     )
 }
+
+export default Social;

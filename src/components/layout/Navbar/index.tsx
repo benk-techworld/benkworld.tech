@@ -3,9 +3,7 @@ import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, Navbar
 import {Link} from "@nextui-org/react"
 import {useLocation} from 'react-router-dom'
 import ThemeSwitcherButton from "@/components/ui/ThemeSwitcherButton";
-import { FaBloggerB } from "react-icons/fa6";
-import { IoIosMoon } from "react-icons/io";
-import { MdSunny } from "react-icons/md";
+import { Icon } from "@iconify/react";
 
 // import logo from '@/assets/logo.svg'
 import Social from "@/components/ui/Social";
@@ -61,22 +59,15 @@ export default function Navigation(): JSX.Element {
                     </NavbarItem>                      
                 </NavbarContent>   
 
-            <NavbarContent className="flex gap-1" justify="end">
-                <NavbarItem className="hidden sm:flex">
-                    <Social containerStyles="flex gap-2" color="foreground"/>
-                </NavbarItem>
-                <NavbarItem className="flex sm:hidden">
-                    <Link href="/blog" color="foreground">
-                        <FaBloggerB size={19}/>
-                    </Link>                    
-                </NavbarItem> 
-                <NavbarItem >
+            <NavbarContent as='div' className="items-center" justify="end">
+                <NavbarItem>
+                    <Social containerStyles="flex gap-1" color="foreground"/>
                     <ThemeSwitcherButton 
-                        darkIcon={<IoIosMoon size={21}/>} 
-                        lightIcon={<MdSunny size={21}/>}
-                        className="bg-transparent text-foreground active:bg-foreground/15 p-[0.39rem] rounded-full"
-                    />
-                </NavbarItem>                                                                        
+                        darkIcon={<Icon icon="clarity:moon-solid" width={24} />} 
+                        lightIcon={<Icon icon="solar:sun-bold" width={24} />}
+                        className="bg-transparent text-foreground active:bg-foreground/15 p-[0.39rem] ml-1 rounded-full"
+                    />                                      
+                </NavbarItem>
             </NavbarContent>
 
             {/* Mobile Menu */}

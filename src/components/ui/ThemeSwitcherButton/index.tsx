@@ -1,12 +1,12 @@
 import { ComponentProps } from "react"
 import {useTheme} from "@/contexts/ThemeProvider/index"
 
-type ThemeSwitcherProps = ComponentProps<'button'> & {
+type ThemeSwitcherButtonProps = ComponentProps<'button'> & {
   lightIcon: React.ReactNode
   darkIcon: React.ReactNode
 }
 
-export default function ThemeSwitcherButton({className,lightIcon,darkIcon,...rest} : ThemeSwitcherProps) {
+const ThemeSwitcherButton : React.FC<ThemeSwitcherButtonProps> = ({lightIcon,darkIcon,...rest}) => {
 
   const {theme,setTheme} = useTheme();
 
@@ -15,8 +15,10 @@ export default function ThemeSwitcherButton({className,lightIcon,darkIcon,...res
   }
   
   return (
-      <button onClick={toggleTheme} className={className} {...rest}>
+      <button onClick={toggleTheme} {...rest}>
         {theme === "dark" ? lightIcon : darkIcon}
       </button>      
   );
 }
+
+export default ThemeSwitcherButton;

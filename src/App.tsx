@@ -16,7 +16,7 @@ function App() {
   const navigate = useNavigate();
   
   return (
-      <NextUIProvider navigate={navigate} className='bg-light-gradient dark:bg-dark-gradient min-h-screen'>
+      <NextUIProvider navigate={navigate} className='bg-light-gradient dark:bg-dark-gradient min-h-screen min-w-screen'>
           <Routes>
             <Route path="/" element={<Layout/>}>
               <Route index element={<UnderConstruction pageName='Home'/>}/>

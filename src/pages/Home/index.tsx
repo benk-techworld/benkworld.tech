@@ -4,8 +4,6 @@ import avatar from '@/assets/avatar_v2.jpg'
 import { Variants } from 'framer-motion';
 // import Social from '@/components/ui/Social';
 import {motion} from 'framer-motion';
-import { IoMdDownload } from "react-icons/io";
-import { FaArrowRight } from "react-icons/fa";
 import { useLayoutEffect } from 'react';
 // import Stats from '@/components/ui/Stats';
 
@@ -68,9 +66,7 @@ export default function Home(): JSX.Element {
                                 <Button 
                                     size='md'
                                     className='bg-red-500 dark:bg-red-700 text-white font-bold'
-                                    radius='sm'
-                                    endContent={<IoMdDownload size={15}/>}
-                    
+                                    radius='sm'                    
                                 >
                                     Download CV
                                 </Button>
@@ -78,7 +74,6 @@ export default function Home(): JSX.Element {
                                     size='md'
                                     className='bg-foreground text-background font-bold'
                                     radius='sm'
-                                    endContent={<FaArrowRight size={15}/>}
                                 >
                                     Hire Me
                                 </Button>                                
