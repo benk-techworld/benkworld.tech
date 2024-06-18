@@ -7,7 +7,7 @@ import { FaBloggerB } from "react-icons/fa6";
 import { IoIosMoon } from "react-icons/io";
 import { MdSunny } from "react-icons/md";
 
-import logo from '@/assets/logo.svg'
+// import logo from '@/assets/logo.svg'
 import Social from "@/components/ui/Social";
 
 export default function Navigation(): JSX.Element {
@@ -20,7 +20,7 @@ export default function Navigation(): JSX.Element {
         <Navbar 
             isMenuOpen={isMenuOpen}
             onMenuOpenChange={setIsMenuOpen}
-            isBlurred
+            className="bg-transparent"
             classNames={{
                 item: [
                     "flex",
@@ -41,8 +41,8 @@ export default function Navigation(): JSX.Element {
         >  
                 <NavbarBrand>
                     <Link onClick={()=>{if (isMenuOpen) setIsMenuOpen(false)}} href="/">
-                        <img src={logo} className="mr-2 w-8" alt="Logo" />
-                        <h1 className="text-secondary font-bold text-[0.98em]" >Benk <span className="text-primary">TechWorld</span></h1>
+                        {/* <img src={logo} className="mr-2 w-8" alt="Logo" /> */}
+                        <h1 className="text-secondary font-bold text-[0.98em]" >Benk <span className="text-red-400">TechWorld</span></h1>
                     </Link>
                 </NavbarBrand>                          
                 <NavbarContent className="hidden sm:flex gap-4" justify="center">                               

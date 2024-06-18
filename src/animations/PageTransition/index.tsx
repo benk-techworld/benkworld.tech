@@ -11,7 +11,7 @@ const PageTransition = ({children}:{children:React.ReactNode}) => {
                 <motion.div
                     initial={{opacity: 1}}
                     animate={{ opacity: 0, transition: {delay: 1, duration: 0.4, ease: "easeInOut"} }}
-                    className="h-screen w-screen fixed bg-background top-0 pointer-events-none"
+                    className="h-screen w-screen fixed top-0 pointer-events-none bg-light-gradient dark:bg-dark-gradient z-20"
                 />                    
                 {children}
             </motion.div>
