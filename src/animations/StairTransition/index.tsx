@@ -1,5 +1,5 @@
 import {AnimatePresence,motion} from 'framer-motion';
-import { useLocation } from 'react-router';
+import { useLocation } from 'react-router-dom';
 
 import Stairs from '@/components/ui/Stairs';
 

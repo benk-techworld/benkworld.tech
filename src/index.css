@@ -5,8 +5,6 @@
 @tailwind utilities;
 
 :root {
-  line-height: 1.5;
-  font-weight: 500;
   color-scheme: light dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,8 +12,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 * {
   box-sizing: border-box;
 }
-
 

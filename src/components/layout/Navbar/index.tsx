@@ -1,17 +1,18 @@
 import { useState } from "react";
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem} from "@nextui-org/navbar";
-import {Link} from "@nextui-org/react"
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link} from "@nextui-org/react";
 import {useLocation} from 'react-router-dom'
 import ThemeSwitcherButton from "@/components/ui/ThemeSwitcherButton";
 import { Icon } from "@iconify/react";
 
 // import logo from '@/assets/logo.svg'
 import Social from "@/components/ui/Social";
+import { useTheme } from "@/contexts/ThemeProvider";
 
 export default function Navigation(): JSX.Element {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const location = useLocation();
+    const {theme} = useTheme()
 
     return (
 
@@ -20,6 +21,7 @@ export default function Navigation(): JSX.Element {
             onMenuOpenChange={setIsMenuOpen}
             className="bg-transparent"
             isBlurred
+            maxWidth="xl"
             classNames={{
                 item: [
                     "flex",
@@ -35,8 +37,6 @@ export default function Navigation(): JSX.Element {
                     "data-[active=true]:after:bg-focus",
                 ]
             }}
-            maxWidth="xl"
-
         >  
                 <NavbarBrand>
                     <Link onClick={()=>{if (isMenuOpen) setIsMenuOpen(false)}} href="/">
@@ -66,6 +66,7 @@ export default function Navigation(): JSX.Element {
                         darkIcon={<Icon icon="clarity:moon-solid" width={24} />} 
                         lightIcon={<Icon icon="solar:sun-bold" width={24} />}
                         className="bg-transparent text-foreground active:bg-foreground/15 p-[0.39rem] ml-1 rounded-full"
+                        title={theme==="dark" ? "Switch to light theme" : "Switch to dark theme"}
                     />                                      
                 </NavbarItem>
             </NavbarContent>

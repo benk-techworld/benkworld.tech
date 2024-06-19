@@ -1,5 +1,5 @@
 import {AnimatePresence,motion} from 'framer-motion';
-import { useLocation } from 'react-router';
+import { useLocation } from 'react-router-dom';
 
 const PageTransition = ({children}:{children:React.ReactNode}) => {
 
