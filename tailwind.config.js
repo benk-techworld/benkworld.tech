@@ -17,6 +17,15 @@ export default {
       backgroundImage: {
         'dark-gradient': 'linear-gradient(109.6deg, rgb(30,30,30) 32.4%, rgb(97,7,38) 98.8%)',
         'light-gradient': 'linear-gradient(109.6deg, rgb(255,250,250) 32.4%, rgb(255,150,170) 98.8%)'
+      },
+      container: {
+        center : true,
+      },
+      height: {
+        'cscreen': 'calc(100vh - var(--navbar-height))',
+      },
+      minHeight: {
+        'cscreen': 'calc(100vh - var(--navbar-height))',
       }
     }
   },

@@ -20,12 +20,12 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (
             if (storedTheme && themes.includes(storedTheme)) {
                 return storedTheme as Theme
             }
+            return defaultTheme || getSystemTheme()
 
         }catch (e) {
             console.error(e)
+            return defaultTheme || getSystemTheme()
         }
-
-        return defaultTheme || getSystemTheme()
 
     }
 
@@ -47,6 +47,8 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (
                 }
             } catch (e) {
                 console.error(e)
+                const systemTheme = getSystemTheme() as Theme
+                setTheme(systemTheme)
             }            
         }
 
