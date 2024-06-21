@@ -21,7 +21,7 @@ export default function Navigation(): JSX.Element {
             onMenuOpenChange={setIsMenuOpen}
             className="bg-transparent"
             isBlurred
-            maxWidth="xl"
+            maxWidth="lg"
             classNames={{
                 item: [
                     "flex",

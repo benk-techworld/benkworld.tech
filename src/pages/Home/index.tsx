@@ -3,7 +3,7 @@ import AnimatedImage from '@/components/ui/AnimatedImage';
 import { Variants } from 'framer-motion';
 import avatar from '@/assets/avatar_v2.jpg'
 import { Icon } from '@iconify/react';
-import { Button } from '@nextui-org/react';
+import { Button, Spacer } from '@nextui-org/react';
 import {motion, AnimatePresence} from 'framer-motion'
 
 const bounceVariants: Variants = {
@@ -30,48 +30,78 @@ export default function Home(): JSX.Element {
     },[])
 
     return (
-        <div>
-            <section className='container flex flex-col items-center justify-center text-center gap-3 mt-12'>
+        <div className='flex flex-col md:flex-row sm:items-center justify-evenly'>
+            <section>
+                <div className='flex flex-col gap-4 text-left px-6 py-8 xl:py-24'>
+                    <h3 className='text-md sm:text-lg xl:text-xl 2xl:text-2xl text-foreground/70 font-semibold'>
+                        Hello there!
+                        <Icon icon="noto:waving-hand" className='inline-block ml-1 size-[1.3rem] xl:size-[2rem]'/>
+                    </h3>
+                    <div>
+                        <h1 className='text-xl sm:text-3xl xl:text-4xl 2xl:text-5xl'>
+                            I'm <span className='font-bold text-focus'>Arafet BenKilani</span>
+                        </h1>
+                        <h2 className='uppercase text-xl sm:text-4xl xl:text-5xl 2xl:text-6xl font-semibold'>Cloud DevSecOps Engineer</h2>
+                    </div>
+                    <p className='max-w-[60ch] text-sm sm:text-md xl:text-lg text-foreground/70 font-base'>
+                        <span className='font-semibold text-md sm:text-lg xl:text-xl text-foreground-500'>
+                            From Tunisia
+                            <Icon icon="twemoji:flag-tunisia" className='inline-block size-[1.3rem] xl:size-[1.8rem] ml-2' />
+                        </span>
+                        <Spacer y={2}/>
+                        My main focus is on <strong className='text-foreground/85'>Cloud, Security, DevOps</strong> and <strong className='text-foreground/85'>Software</strong> development. 
+                        If you want me on your team or need assistance with a project of yours, 
+                        please feel free to contact me!
+                    </p>
+                    <div className='mt-2 flex items-center gap-3'>
+                        <Button 
+                            size='md' 
+                            variant='shadow' 
+                            radius='sm' 
+                            color='primary'
+                            className='uppercase font-semibold'
+                            startContent={<Icon icon="mingcute:download-3-fill" className='size-[0.9rem]' />}
+                        >
+                            Download CV
+                        </Button>
+                        <Button 
+                            size='md' 
+                            variant='ghost' 
+                            radius='sm' 
+                            className='uppercase font-semibold border-foreground'
+                            startContent={<Icon icon="simple-icons:whatsapp" className='size-[0.9rem]' />}
+                        >
+                            Get In Touch
+                        </Button>
+                        <AnimatePresence>
+                            <motion.div
+                                initial={{x: 0}}
+                                animate = {{
+                                    x : [10,-5,10],
+                                    transition : {
+                                        duration: 1.5,
+                                        repeat: Infinity,
+                                        repeatType : 'mirror',
+                                        ease : "easeInOut"
+                                    }
+                                }}
+                            >
+                                <Icon icon="f7:hand-point-left-fill" className='text-foreground size-[1.5rem]' />
+                            </motion.div>
+                        </AnimatePresence> 
+                    </div>                   
+                </div>
+            </section>
+            <section className='flex justify-center items-center mt-6'>
                 <AnimatedImage
                     motionvariants={bounceVariants}
                     motionTransition={{duration: 0.4}}
                     src={avatar}
                     alt='Arafet BenKilani'
                     radius='full'
-                    className='border-4 border-primary w-[100px] md:w-[130px] xl:w-[170px]'
+                    className='border-4 border-primary w-[200px] xl:w-[300px] 2xl:w-[340px]'
                 />  
-                <h2 className='mt-4 font-base text-foreground/80 text-md sm:text-xl md:text-2xl xl:text-3xl'>
-                    Hi there! <br/> I'm <span className='text-primary font-semibold'>Arafet BenKilani</span>
-                    <Icon icon="noto:waving-hand" className='inline-block ml-1 size-[1.5rem] sm:size-[1.8rem] md:size-[2.1rem] xl:size-[2.5rem]'/>
-                </h2>
-                <h1 className='uppercase font-bold tracking-lighter leading-[0.9] text-3xl sm:text-5xl md:text-6xl xl:text-8xl'>
-                    Cloud <br/> DevSecOps Engineer.
-                </h1>
-                <p className='max-w-[60ch] font-normal text-foreground/90 text-sm sm:text-md md:text-lg xl:text-xl'>
-                    My main focus is on <strong>Cloud, Security, DevOps</strong> and other emerging technical areas. If you want me on your team or need assistance with your project, 
-                    please feel free to contact me!
-                </p>
-                <div className='mt-5 flex items-center gap-3'>
-                    <Button variant='bordered' radius='sm' className='text-foreground border-foreground/80 font-semibold'>Download CV</Button>
-                    <Button variant='shadow' radius='sm' className='text-background bg-foreground font-semibold'>Reach Out</Button>
-                    <AnimatePresence>
-                        <motion.div
-                            initial={{x: 0}}
-                            animate = {{
-                                x : [10,-5,10],
-                                transition : {
-                                    duration: 1.5,
-                                    repeat: Infinity,
-                                    repeatType : 'mirror',
-                                    ease : "easeInOut"
-                                }
-                            }}
-                        >
-                            <Icon icon="f7:hand-point-left-fill" className='text-foreground size-[1.5rem]' />
-                        </motion.div>
-                    </AnimatePresence>
-                </div>              
-            </section>
+            </section>            
         </div>
     );
 }
