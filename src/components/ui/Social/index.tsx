@@ -12,10 +12,6 @@ const socials: Social[] = [
         path: "https://github.com/benk-techworld"
     },
     {
-        icon: <Icon icon="ic:sharp-facebook" width={26} />,
-        path: "https://www.facebook.com/fsociety.fu"
-    },
-    {
         icon: <Icon icon="entypo-social:linkedin-with-circle" width={24} />,
         path: "https://www.linkedin.com/in/arafet-ben-kilani/"
     },        

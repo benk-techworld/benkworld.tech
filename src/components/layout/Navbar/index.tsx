@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link} from "@nextui-org/react";
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Divider} from "@nextui-org/react";
 import {useLocation} from 'react-router-dom'
 import ThemeSwitcherButton from "@/components/ui/ThemeSwitcherButton";
 import { Icon } from "@iconify/react";
@@ -62,9 +62,10 @@ export default function Navigation(): JSX.Element {
                     </NavbarItem>                      
                 </NavbarContent>   
 
-            <NavbarContent as='div' className="items-center" justify="end">
+            <NavbarContent justify="end">
                 <NavbarItem>
                     <Social containerStyles="flex gap-1" color="foreground"/>
+                    <Divider orientation="vertical" className="ml-2 h-7"/>
                     <ThemeSwitcherButton 
                         darkIcon={<Icon icon="clarity:moon-solid" width={24} />} 
                         lightIcon={<Icon icon="solar:sun-bold" width={24} />}
