@@ -30,7 +30,7 @@ export default function Home(): JSX.Element {
     },[])
 
     return (
-        <div className='flex flex-col md:flex-row sm:items-center justify-evenly'>
+        <div className='flex flex-col md:flex-row sm:items-center justify-center md:gap-14'>
             <section>
                 <div className='flex flex-col gap-4 text-left px-6 py-8 xl:py-24'>
                     <h3 className='text-md sm:text-lg xl:text-xl 2xl:text-2xl text-foreground/70 font-semibold'>
@@ -99,7 +99,7 @@ export default function Home(): JSX.Element {
                     src={avatar}
                     alt='Arafet BenKilani'
                     radius='full'
-                    className='border-4 border-primary w-[200px] xl:w-[300px] 2xl:w-[340px]'
+                    className='border-4 border-primary w-[200px] xl:w-[300px]'
                 />  
             </section>            
         </div>
