@@ -19,7 +19,13 @@
 }
 
 *{
-  line-height: 1.1;
   margin: 0;
   padding: 0;
+}
+
+
+@layer components {
+  body {
+    @apply bg-light-gradient dark:bg-dark-gradient min-w-[300px];
+  }
 }

@@ -1,19 +1,18 @@
 import { useLayoutEffect } from 'react';
 import AnimatedImage from '@/components/ui/AnimatedImage';
 import { Variants } from 'framer-motion';
-import avatar from '@/assets/avatar_v2.jpg'
+import avatar from '@/assets/avatar2.jpg'
 import { Icon } from '@iconify/react';
 import { Button, Spacer } from '@nextui-org/react';
 import {motion, AnimatePresence} from 'framer-motion'
 
 const bounceVariants: Variants = {
-  initial: { opacity:0, y: 0 },
+  initial: { opacity:0},
   animate: {
     opacity:1,
-    y: [0, -40, 0, -30, 0, -20, 0, -10, 0,-5,0], // keyframes for bouncing
     transition: {
-      duration: 2,
-      ease: 'linear',
+      duration: 3,
+      ease: 'easeIn',
       delay: 2
     }
   },
@@ -30,7 +29,7 @@ export default function Home(): JSX.Element {
     },[])
 
     return (
-        <div className='flex flex-col md:flex-row sm:items-center justify-center md:gap-14'>
+        <div className='flex flex-col md:flex-row justify-center md:gap-14'>
             <section>
                 <div className='flex flex-col gap-4 text-left px-6 py-8 xl:py-24'>
                     <h3 className='text-md sm:text-lg xl:text-xl 2xl:text-2xl text-foreground/70 font-semibold'>
@@ -60,7 +59,7 @@ export default function Home(): JSX.Element {
                             radius='sm' 
                             color='primary'
                             className='uppercase font-semibold'
-                            startContent={<Icon icon="mingcute:download-3-fill" className='size-[0.9rem]' />}
+                            startContent={<Icon icon="mingcute:download-3-fill" className='size-[1frem]' />}
                         >
                             Download CV
                         </Button>
@@ -92,14 +91,15 @@ export default function Home(): JSX.Element {
                     </div>                   
                 </div>
             </section>
-            <section className='flex justify-center items-center mt-6'>
+            <section className='self-center mt-10 md:mt-0'>
                 <AnimatedImage
                     motionvariants={bounceVariants}
                     motionTransition={{duration: 0.4}}
                     src={avatar}
                     alt='Arafet BenKilani'
                     radius='full'
-                    className='border-4 border-primary w-[200px] xl:w-[300px]'
+                    isBlurred
+                    className='border-4 border-primary w-[160px] xl:w-[300px]'
                 />  
             </section>            
         </div>
