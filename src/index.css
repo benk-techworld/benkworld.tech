@@ -28,4 +28,7 @@
   body {
     @apply bg-light-gradient dark:bg-dark-gradient min-w-[300px];
   }
+  .particle {
+    @apply absolute rounded-full;
+  }
 }

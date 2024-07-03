@@ -44,10 +44,7 @@ export default function Navigation(): JSX.Element {
                         <h1 className="text-foreground font-bold text-[0.98em]" >Benk <span className="text-primary">TechWorld</span></h1>
                     </Link>
                 </NavbarBrand>                          
-                <NavbarContent className="hidden sm:flex gap-4" justify="center">
-                    <NavbarItem isActive={location.pathname === "/"}>
-                        <Link color="foreground" href="/">Home</Link>
-                    </NavbarItem>                                                   
+                <NavbarContent className="hidden sm:flex gap-4" justify="center">                                                
                     <NavbarItem isActive={location.pathname === "/about"}>
                         <Link color="foreground" href="/about">About</Link>
                     </NavbarItem>
@@ -77,10 +74,7 @@ export default function Navigation(): JSX.Element {
 
             {/* Mobile Menu */}
             <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="text-foreground sm:hidden"/>            
-            <NavbarMenu className="bg-background/40">
-                <NavbarMenuItem>
-                    <Link onClick={()=>setIsMenuOpen(false)} color="foreground" href="/">Home</Link>
-                </NavbarMenuItem>                        
+            <NavbarMenu className="bg-background/40">                      
                 <NavbarMenuItem>
                     <Link onClick={()=>setIsMenuOpen(false)} color="foreground" href="/about">About</Link>
                 </NavbarMenuItem>

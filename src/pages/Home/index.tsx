@@ -1,107 +1,54 @@
-import { useLayoutEffect } from 'react';
-import AnimatedImage from '@/components/ui/AnimatedImage';
-import { Variants } from 'framer-motion';
+import React, { useLayoutEffect } from 'react';
+import {Image, Button} from '@nextui-org/react'
+
 import avatar from '@/assets/avatar2.jpg'
 import { Icon } from '@iconify/react';
-import { Button, Spacer } from '@nextui-org/react';
-import {motion, AnimatePresence} from 'framer-motion'
-
-const bounceVariants: Variants = {
-  initial: { opacity:0},
-  animate: {
-    opacity:1,
-    transition: {
-      duration: 3,
-      ease: 'easeIn',
-      delay: 2
-    }
-  },
-  hover: {
-    scale: 1.2, // scale up on hover
-    transition: { duration: 0.4 },
-  }  
-};
+import Particles from '@/components/ui/Particles';
 
 export default function Home(): JSX.Element {
 
     useLayoutEffect(()=>{
-        document.title = "Home | Arafet Techworld"
+        document.title = "Home | Arafet BenKilani"
     },[])
 
     return (
-        <div className='flex flex-col md:flex-row justify-center md:gap-14'>
-            <section>
-                <div className='flex flex-col gap-4 text-left px-6 py-8 xl:py-24'>
-                    <h3 className='text-md sm:text-lg xl:text-xl 2xl:text-2xl text-foreground/70 font-semibold'>
-                        Hello there!
-                        <Icon icon="noto:waving-hand" className='inline-block ml-1 size-[1.3rem] xl:size-[2rem]'/>
-                    </h3>
-                    <div>
-                        <h1 className='text-xl sm:text-3xl xl:text-4xl 2xl:text-5xl'>
-                            I'm <span className='font-bold text-focus'>Arafet BenKilani</span>
-                        </h1>
-                        <h2 className='uppercase text-xl sm:text-4xl xl:text-5xl 2xl:text-6xl font-semibold'>Cloud DevSecOps Engineer</h2>
-                    </div>
-                    <p className='max-w-[60ch] text-sm sm:text-md xl:text-lg text-foreground/70 font-base'>
-                        <span className='font-semibold text-md sm:text-lg xl:text-xl text-foreground-500'>
-                            From Tunisia
-                            <Icon icon="twemoji:flag-tunisia" className='inline-block size-[1.3rem] xl:size-[1.8rem] ml-2' />
-                        </span>
-                        <Spacer y={2}/>
-                        My main focus is on <strong className='text-foreground/85'>Cloud, Security, DevOps</strong> and <strong className='text-foreground/85'>Software</strong> development. 
-                        If you want me on your team or need assistance with a project of yours, 
+        <React.Fragment>
+            <section className='relative py-16 border-b-small border-foreground/5 overflow-hidden'>
+                <Particles/>
+                <div className='container text-center flex flex-col items-center gap-y-7'>
+                    <Image
+                        src={avatar}
+                        alt='Arafet BenKilani'
+                        radius='full'
+                        width={125}
+                        className='border-4 border-primary'
+                    />
+
+                    <h2 className='flex items-center gap-1 font-poppins font-[600] text-3xl sm:text-4xl text-foreground/90'>
+                        Hi there! 
+                        <Icon icon="noto:waving-hand" className='size-[1.8rem]'/> 
+                    </h2>
+                    <p className='max-w-[720px] text-sm sm:text-lg text-foreground-600/70 px-2'>
+                        I'm <strong className='text-foreground'>Arafet BenKilani</strong>, a Cloud DevSecOps Engineer from Tunisia <Icon icon="twemoji:flag-tunisia" className='inline-block size-[1.2rem] mb-1'/>.
+                        My main focus is on <strong>Cloud, Security, DevOps and Software development.</strong> If you want me on your team or you need my assistance on a project, 
                         please feel free to contact me!
                     </p>
-                    <div className='mt-2 flex items-center gap-3'>
+
+                    <div>
                         <Button 
-                            size='md' 
+                            size='sm' 
                             variant='shadow' 
                             radius='sm' 
                             color='primary'
                             className='uppercase font-semibold'
                             startContent={<Icon icon="mingcute:download-3-fill" className='size-[1frem]' />}
+                            type='submit'
                         >
                             Download CV
                         </Button>
-                        <Button 
-                            size='md' 
-                            variant='ghost' 
-                            radius='sm' 
-                            className='uppercase font-semibold border-foreground'
-                            startContent={<Icon icon="simple-icons:whatsapp" className='size-[0.9rem]' />}
-                        >
-                            Get In Touch
-                        </Button>
-                        <AnimatePresence>
-                            <motion.div
-                                initial={{x: 0}}
-                                animate = {{
-                                    x : [10,-5,10],
-                                    transition : {
-                                        duration: 1.5,
-                                        repeat: Infinity,
-                                        repeatType : 'mirror',
-                                        ease : "easeInOut"
-                                    }
-                                }}
-                            >
-                                <Icon icon="f7:hand-point-left-fill" className='text-foreground size-[1.5rem]' />
-                            </motion.div>
-                        </AnimatePresence> 
-                    </div>                   
+                    </div>
                 </div>
             </section>
-            <section className='self-center mt-10 md:mt-0'>
-                <AnimatedImage
-                    motionvariants={bounceVariants}
-                    motionTransition={{duration: 0.4}}
-                    src={avatar}
-                    alt='Arafet BenKilani'
-                    radius='full'
-                    isBlurred
-                    className='border-4 border-primary w-[160px] xl:w-[300px]'
-                />  
-            </section>            
-        </div>
+        </React.Fragment>
     );
 }
